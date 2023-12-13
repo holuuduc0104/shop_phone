@@ -47,7 +47,7 @@ if (!isset($_GET['catid']) || $_GET['catid'] == NULL) {
                                         <div class="col-md-3 mb-3 pro_list">
                                             <a href="details.php?proid=<?php echo $result['productID']; ?>"><img src="admin/uploads/<?php echo $result['image']; ?>" class="img-fluid "></a>
                                             <h4><a href="details.php?proid=<?php echo $result['productID']; ?>" class="text-dark"><?php echo $result['productName'] ?></a></h4>
-                                            <h3 class="text-danger"><?php echo '$' . $result['price']; ?></h3>
+                                            <h3 class="text-danger"><?php echo '$' . $fm->format_currency($result['price']); ?></h3>
                                         </div>
                                 <?php
                                     }

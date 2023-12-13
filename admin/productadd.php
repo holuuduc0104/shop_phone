@@ -31,7 +31,7 @@ include("../classes/product.php");
         <div class="col-md-10">
             <form action="productadd.php" method="post" enctype="multipart/form-data">
                 <div class="card">
-                    <div class="card-header text-white form_bg" style="font-weight:bolder;">
+                    <div class="card-header text-white form_bg fs-4" style="font-weight:bolder;">
                         Add New Product
                     </div>
 
@@ -39,7 +39,7 @@ include("../classes/product.php");
                         <div class="row mb-3">
                             <label for="productName" class="col-md-3 col-form-label ">Name</label>
                             <div class="col-md-9">
-                                <input type="text" class="form-control" name="productName" id="productName">
+                                <input type="text" class="form-control" name="productName" id="productName"  placeholder="Enter Product Name">
                             </div>
                         </div>
 
@@ -91,11 +91,11 @@ include("../classes/product.php");
                         <div class="row mb-3">
                             <label for="price" class="col-md-3 col-form-label ">Price</label>
                             <div class="col-md-9">
-                                <input type="text" class="form-control" name="price" id="price">
+                                <input type="text" class="form-control" name="price" id="price" placeholder="Enter Price">
                             </div>
                         </div>
                         <div class="row mb-3">
-                            <label for="image" class="col-md-3 col-form-label ">Upload Image</label>
+                            <label for="image" class="col-md-3 col-form-label ">Product Image</label>
                             <div class="col-md-9">
                                 <input type="file" class="form-control" name="image" id="image">
                             </div>
@@ -104,7 +104,7 @@ include("../classes/product.php");
                             <label for="type" class="col-md-3 col-form-label ">Product Type</label>
                             <div class="col-md-9">
                                 <select class="form-select" aria-label="Default select example" name="type">
-                                    <option selected>Select Type</option>
+                                    <option selected>------Select Type------</option>
                                     <option value="1">Featured</option>
                                     <option value="0">Non-Featured</option>
                                 </select>

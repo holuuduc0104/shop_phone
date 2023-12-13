@@ -13,10 +13,10 @@ if (isset($_GET['delid'])) {
     $id = $_GET['delid'];
     $delProduct = $pd->del_product($id);
     if ($delProduct == 'true') {
-        echo '<script>alert("Deleted Product Successfully.");
+        echo '<script>alert("Delete Product Successfully.");
            </script>';
     } else {
-        echo '<script>alert("Deleted Product Failed.");
+        echo '<script>alert("Delete Product Failed.");
         </script>';
     }
 }
@@ -24,34 +24,32 @@ if (isset($_GET['delid'])) {
 <div class="container-fluid mt-0">
     <div class="row justify-content-end">
         <div class="col-md-3 mb-2 mt-0">
-            <button type="button" class="btn btn-info"><a href="productadd.php">Add Product</a></button>
+        <a href="productadd.php"><button type="button" class="btn btn-info">Add Product</button></a>
         </div>
     </div>
     <div class="row justify-content-center">
         <div class="col-md-12">
             <div class="card">
-                <div class="card-header text-white form_bg" style="font-weight:bolder;">
+                <div class="card-header text-white form_bg fs-4" style="font-weight:bolder;">
                     Product List
                 </div>
                 <div class="card-body p-0">
                     <table class="table table-striped catlist mb-0">
                         <thead>
                             <tr>
-                                <th scope="col" style="width: 35px;">ID</th>
-                                <th scope="col" style="width: 200px;">Name</th>
-                                <th scope="col" style="width: 125px;">Price</th>
-                                <th scope="col" style="width: 200px;">Image</th>
-                                <th scope="col" style="width: 140px;">Category</th>
-                                <th scope="col" style="width: 140px;">Brand</th>
-                                <th scope="col" style="width: 330px;">Description</th>
-                                <th scope="col" style="width: 130px;">Type</th>
-                                <th scope="col" class="text-center">Action</th>
-                                <th scope="col" class="text-center">Action</th>
+                                <th scope="col" style="width: 3%;">ID</th>
+                                <th scope="col" style="width: 20%;">Name</th>
+                                <th scope="col" style="width: 7%;">Price</th>
+                                <th scope="col" style="width: 10%;">Image</th>
+                                <th scope="col" style="width: 10%;">Category</th>
+                                <th scope="col" style="width: 10%;">Brand</th>
+                                <th scope="col" style="width: 20%;">Description</th>
+                                <th scope="col" style="width: 10%;">Type</th>
+                                <th scope="col" class="text-center" colspan="2">Action</th>
                             </tr>
                         </thead>
                         <tbody>
                             <?php
-
                             $pdlist = $pd->show_product();
                             if ($pdlist) {
                                 $i = 0;
@@ -61,8 +59,8 @@ if (isset($_GET['delid'])) {
                                     <tr>
                                         <td scope="row"><?php echo $i; ?></td>
                                         <td><?php echo $result['productName']; ?></td>
-                                        <td><?php echo $result['price']; ?></td>
-                                        <td><img src="uploads/<?php echo $result['image']; ?>" width="100px"></td>
+                                        <td><?php echo '$'.$fm->format_currency($result['price']); ?></td>
+                                        <td><img src="uploads/<?php echo $result['image']; ?>" width="100px" class="img-fluid"></td>
                                         <td><?php echo $result['catName']; ?></td>
                                         <td><?php echo $result['brandName']; ?></td>
                                         <td><?php echo $fm->textShorten($result['product_desc'], 25); ?></td>
@@ -78,15 +76,14 @@ if (isset($_GET['delid'])) {
 
 
                                         <td class="text-center">
-                                            <button type="button" class="btn btn-warning" style="width: 100px; height:35px;">
+                                            <button type="button" class="btn btn-warning" style="width: 80px; height:35px;">
                                                 <a href="productedit.php?productid=<?php echo $result['productID']; ?>" style="display: block;">Edit</a>
 
                                             </button>
                                         </td>
                                         <td class="text-center">
-                                            <button type="button" class="btn btn-danger" style="width: 100px; height:35px;">
+                                            <button type="button" class="btn btn-danger" style="width: 80px; height:35px;">
                                                 <a onclick="return confirm('Are you want to delete?')" href="?delid=<?php echo $result['productID']; ?>" style="display: block;">Delete</a>
-
                                             </button>
                                         </td>
                                     </tr>

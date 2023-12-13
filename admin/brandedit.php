@@ -18,10 +18,10 @@ if($_SERVER['REQUEST_METHOD'] === 'POST'){
         echo '<script>alert("Brand must be not empty!");
             </script>';
     }else if($updateBrand == 'true') {
-        echo '<script>alert("Updated Brand Successfully.");
+        echo '<script>alert("Update Brand Successfully.");
             window.location="brandlist.php";</script>';
     }else{
-        echo '<script>alert("Updated Brand Failed.");
+        echo '<script>alert("Update Brand Failed.");
         window.location="brandlist.php";</script>';
     }
 }
@@ -32,7 +32,7 @@ if($_SERVER['REQUEST_METHOD'] === 'POST'){
         <div class="col-md-6">
             <form action="" method="post">
                 <div class="card">
-                <div class="card-header text-white form_bg" style="font-weight:bolder;">
+                <div class="card-header text-white form_bg fs-4" style="font-weight:bolder;">
                         Edit Brand
                     </div>
                     

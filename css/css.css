@@ -131,3 +131,10 @@ a{
     .link_to_brand:hover{
       color: rgb(233, 27, 27);
     }
+    .edit_pf:hover{
+    color:rgb(232, 135, 61) !important;
+    border-color: rgb(232, 135, 61) !important;
+    }
+    .success-bg{
+      background-color: #9784da;
+    }

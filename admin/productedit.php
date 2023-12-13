@@ -51,7 +51,7 @@ include("../classes/product.php");
             ?>
             <form action="" method="post" enctype="multipart/form-data">
             <div class="card">
-                    <div class="card-header text-white form_bg" style="font-weight:bolder;">
+                    <div class="card-header text-white form_bg fs-4" style="font-weight:bolder;">
                         Add New Product
                     </div>
 
@@ -67,7 +67,7 @@ include("../classes/product.php");
                             <label for="category" class="col-md-3 col-form-label ">Category</label>
                             <div class="col-md-9">
                                 <select class="form-select" aria-label="Default select example" name="category">
-                                    <option selected>-------Select Category-------</option>
+                                    <option>-------Select Category-------</option>
                                     <?php 
                                     $cat = new category();
                                     $catlist = $cat->show_category();
@@ -91,7 +91,7 @@ include("../classes/product.php");
                             <label for="brand" class="col-md-3 col-form-label">Brand</label>
                             <div class="col-md-9">
                                 <select class="form-select" aria-label="Default select example" name="brand">
-                                    <option selected>-------Select Brand-------</option>
+                                    <option>-------Select Brand-------</option>
                                     <?php 
                                     $brand = new brand();
                                     $brandlist = $brand->show_brand();

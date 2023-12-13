@@ -61,10 +61,44 @@ class customer
                 Session::set('customer_login', true);
                 Session::set('customer_id', $value['id']);
                 Session::set('customer_name', $value['name']);
-                header('Location:order.php');
-                
+                header('Location:index.php');
             } else {
                 $alert = "<span class='text-danger'>Email and Password doesn't match!</span>";
+                return $alert;
+            }
+        }
+    }
+    public function show_customers($id)
+    {
+        $query = "SELECT * FROM  tb_customer WHERE id = $id";
+        $result = $this->db->select($query);
+        return $result;
+    }
+    public function show_order($order_code)
+    {
+        $query = "SELECT * FROM  tb_order WHERE order_code = '$order_code'";
+        $result = $this->db->select($query);
+        return $result;
+    }
+    public function update_customer($data, $id)
+    {
+        $name = mysqli_real_escape_string($this->db->link, $data['name']);
+        $phone = mysqli_real_escape_string($this->db->link, $data['phone']);
+        $address = mysqli_real_escape_string($this->db->link, $data['address']);
+        $email = mysqli_real_escape_string($this->db->link, $data['email']);
+
+        if ($name == "" || $phone == "" || $address == "" || $email == "") {
+            $alert = '<span class="text-danger">Field must be not empty!</span>';
+            return $alert;
+        } else {
+
+            $query = "UPDATE tb_customer SET name = '$name', phone = '$phone', address = '$address', email = '$email' WHERE id = '$id'";
+            $result = $this->db->update($query);
+            if ($result) {
+                $alert = '<span class="text-success fs-4">Update Successfully.</span>';
+                return $alert;
+            } else {
+                $alert = '<span class="text-danger">Update Failed.</span>';
                 return $alert;
             }
         }

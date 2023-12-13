@@ -3,6 +3,11 @@
     include("inc/header.php");
     include("inc/sidebar.php");
     ?>
+
+        <div class="text-center mt-5">
+        <p class="text-white" style="font-size: 70px">Welcome to the admin page</p>
+        </div>
+
     <!-- ---------------------------------------- -->
 </div>
 </div>

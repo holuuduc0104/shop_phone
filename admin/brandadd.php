@@ -26,14 +26,14 @@ include("../classes/brand.php")
         <div class="col-md-6">
             <form action="brandadd.php" method="post">
                 <div class="card">
-                    <div class="card-header text-white form_bg" style="font-weight:bolder;">
+                    <div class="card-header text-white form_bg fs-4" style="font-weight:bolder;">
                         Add New Brand
                     </div>
                     
                     <div class="card-body">
                         <div class="form-group">
-                            <label for="brandName">Brand Name</label>
-                            <input type="text" class="form-control" name="brandName" id="brandName">
+                            <label for="brandName" class="mb-3 fw-bolder fs-5">Brand Name</label>
+                            <input type="text" class="form-control" name="brandName" id="brandName" placeholder="Enter Category Name">
                         </div>
                         <div class="form-group text-center">
                             <input type="submit" class="btn mt-4 text-white form_bg butt" value="Save" name="submit">

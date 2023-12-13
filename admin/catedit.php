@@ -18,10 +18,10 @@ if($_SERVER['REQUEST_METHOD'] === 'POST'){
         echo '<script>alert("Category must be not empty!");
             </script>';
     }else if($updateCat == 'true') {
-        echo '<script>alert("Updated Category Successfully.");
+        echo '<script>alert("Update Category Successfully.");
             window.location="catlist.php";</script>';
     }else{
-        echo '<script>alert("Updated Category Failed.");
+        echo '<script>alert("Update Category Failed.");
         window.location="catlist.php";</script>';
     }
 }
@@ -32,7 +32,7 @@ if($_SERVER['REQUEST_METHOD'] === 'POST'){
         <div class="col-md-6">
             <form action="" method="post">
                 <div class="card">
-                <div class="card-header text-white form_bg" style="font-weight:bolder;">
+                <div class="card-header text-white form_bg fs-4" style="font-weight:bolder;">
                         Edit Category
                     </div>
                     <?php

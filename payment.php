@@ -2,35 +2,26 @@
 include("inc/header.php");
 ?>
 <?php
-$login_check = Session::get('customer_login');
-if ($login_check == false) {
-    echo '<script>window.location="login.php";</script>';
-}
-?>
-<?php
-if (isset($_GET['cartid'])) {
-    $cartid = $_GET['cartid'];
-    $delcart = $ct->del_product_cart($cartid);
-}
-if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['submit'])) {
-    $cartID = $_POST['cartID'];
-    $quantity = $_POST['quantity'];
-    $update_quantity_cart = $ct->update_quantity_cart($quantity, $cartID);
-    if ($quantity == 0) {
-        $delcart = $ct->del_product_cart($cartID);
+if (isset($_GET['orderid']) && $_GET['orderid'] == 'order') {
+    $customer_id = Session::get('customer_id');
+    $insertOrder = $ct->insertOrder($customer_id);
+    $delCart = $ct->del_all_product_cart($customer_id);
+    if ($delCart == 'true') {
+        echo '<script>window.location="Success.php";;
+                </script>';
+    } else {
+        echo '<script>alert("Order Failed!");
+                </script>';
     }
 }
-if(!isset($_GET['id'])){
-    echo "<meta http-equiv='refresh' content='0;URL=?id=live'>";
-}
+
 ?>
 <div class="container-fluid mt-2 cart_bg" style="padding-top:50px;">
     <div class="row justify-content-center">
-
         <div class="col-md-12">
             <div class="card form_bg">
-                <div class="card-header text-white form_bg fs-4" style="font-weight:bolder;">
-                    Your Cart
+                <div class="card-header text-white form_bg text-center fs-3" style="font-weight:bolder;">
+                    Offline Payment
                 </div>
 
                 <div class="card-body p-0">
@@ -41,7 +32,6 @@ if(!isset($_GET['id'])){
                                 <th scope="col" style="width: 220px;">Price</th>
                                 <th scope="col" style="width: 220px;">Quantity</th>
                                 <th scope="col" style="width: 220px;">Total Price</th>
-                                <th scope="col" class="text-center">Action</th>
                             </tr>
                         </thead>
                         <tbody>
@@ -66,23 +56,14 @@ if(!isset($_GET['id'])){
 
                                         </td>
                                         <td><?php echo '$' . $fm->format_currency($result['price']); ?></td>
-                                        <td>
-                                            <form action="" method="post">
-                                                <input type="hidden" name="cartID" value="<?php echo $result['cartID']; ?>">
-
-                                                <input type="number" name="quantity" min="0" value="<?php echo $result['quantity']; ?>" style="width:70px;">
-                                                <input type="submit" name="submit" class="btn btn-danger" value="Update" style="height:33px; margin-top: -6px">
-                                            </form>
-                                        </td>
+                                        <td><?php echo $result['quantity']; ?></td>
                                         <td>
                                             <?php
                                             $total = $result['price'] * $result['quantity'];
                                             echo '$' . $fm->format_currency($total);
                                             ?>
                                         </td>
-                                        <td class="text-center">
-                                            <a href="?cartid=<?php echo $result['cartID']; ?>" class="text-danger" style="font-weight:bold;">Delete</a>
-                                        </td>
+
                                     </tr>
                             <?php
                                     $subtotal += $total;
@@ -104,10 +85,10 @@ if(!isset($_GET['id'])){
 
                                             <div class="col-md-5">
                                                 <div class="row">
-                                                    <div class="col-md-5">
+                                                    <div class="col-md-5 text-danger fw-bolder">
                                                         Sub Total:
                                                     </div>
-                                                    <div class="col-md-7">
+                                                    <div class="col-md-7 text-danger fw-bolder">
                                                         <?php
                                                         echo '$' . $subtotal;
                                                         Session::set('sum', $subtotal);
@@ -120,11 +101,9 @@ if(!isset($_GET['id'])){
                                         </div>
                                     </td>
                                 <?php
-                                }elseif(!Session::get('customer_login')){
+                                } elseif (!Session::get('customer_login')) {
                                     echo '<span class="text-danger fs-3">Your Cart is Empty!</span>';
-                                }
-                                
-                                else{
+                                } else {
                                     echo '<span class="text-danger fs-3">Your Cart is Empty!</span>';
                                 }
                                 ?>
@@ -134,14 +113,90 @@ if(!isset($_GET['id'])){
 
                 </div>
             </div>
-            <div class="text-center">
-                <a href="payment.php"><button type="button" class="btn btn-danger my-3" style="width: 150px; height: 50px;">Checkout</button></a>
 
-            </div>
         </div>
+    </div>
+
+    <div class="row justify-content-center mt-3">
+        <div class="col-md-12">
+            <div class="card form_bg">
+                <!-- <div class="card-header text-white form_bg" style="font-weight:bolder;">
+                    Your Profile
+                </div> -->
+
+                <div class="card-body p-0">
+                    <table class="table table-striped catlist">
+
+                        <tbody>
+                            <?php
+                            $id = Session::get('customer_id');
+                            $get_customers = $ctm->show_customers($id);
+                            if ($get_customers) {
+                                while ($result = $get_customers->fetch_assoc()) {
+
+
+                            ?>
+                                    <tr style="height: 70px;">
+                                        <td class="py-4 ps-4" style="width: 700px;">Name</td>
+                                        <td class="py-4">:</td>
+                                        <td class="py-4"><?php echo $result['name']; ?></td>
+                                    </tr>
+
+                                    <tr>
+                                        <td class="py-4 ps-4">Email</td>
+                                        <td class="py-4">:</td>
+                                        <td class="py-4"><?php echo $result['email']; ?></td>
+                                    </tr>
+
+                                    <tr>
+                                        <td class="py-4 ps-4">Phone</td>
+                                        <td class="py-4">:</td>
+                                        <td class="py-4"><?php echo $result['phone']; ?></td>
+                                    </tr>
+
+                                    <tr>
+                                        <td class="py-4 ps-4">Address</td>
+                                        <td class="py-4">:</td>
+                                        <td class="py-4"><?php echo $result['address']; ?></td>
+                                    </tr>
+                            <?php
+                                }
+                            }
+                            ?>
+                        </tbody>
+                    </table>
+                </div>
+                <div class="card-footer text-center">
+
+                    <a href="editprofile.php" class="text-white fw-bolder fs-4 lh-lg border-bottom edit_pf">Update Profile</a>
+
+                </div>
+            </div>
+
+        </div>
+    </div>
+    <br>
+
+    <div class="text-center">
+        <tr>
+            <div class="d-flex justify-content-evenly">
+                <a href="?orderid=order"><button type="button" class="btn btn-danger my-3" style="width: 170px; height: 50px;">Order</button></a>
+
+
+                <!-- <form action="momo.php" method="POST">
+                    <input type="hidden" name="total_price" value="<?php echo $fm->format_currency($subtotal * 20000) . 'đ'; ?>">
+                    <button class="btn btn-danger my-3" style="width: 170px; height: 50px;" name="">MOMO</button>
+                </form> -->
+            </div>
+
+
+
+
+        </tr>
     </div>
 </div>
 
+
 <?php
-include("inc/footer.php");
+include('inc/footer.php');
 ?>

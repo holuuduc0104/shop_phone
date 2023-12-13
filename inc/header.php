@@ -29,8 +29,10 @@ $ctm = new customer();
   <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js" integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r" crossorigin="anonymous"></script>
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.min.js" integrity="sha384-BBtl+eGJRgqQAUMxJ7pMwbEyER4l1g+O15P+16Ep7Q9Q+zqX6gSbd85u4mG4QzX+" crossorigin="anonymous"></script>
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css">
+  <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js" integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.min.js" integrity="sha384-BBtl+eGJRgqQAUMxJ7pMwbEyER4l1g+O15P+16Ep7Q9Q+zqX6gSbd85u4mG4QzX+" crossorigin="anonymous"></script>
   <link rel="stylesheet" href="css/css.css">
-  <title>Hello, world!</title>
+  <title>iShop</title>
 </head>
 
 <body>
@@ -72,17 +74,8 @@ $ctm = new customer();
                   </div>
                 </div>
                 <div class="col-9">
-                  <?php //echo Session::get('adminName') 
-                  ?>
-                  <!-- <br> -->
                   <?php
-                  // if(isset($_GET['action']) && $_GET['action'] == 'logout'){
-                  //     Session::destroy();
-                  // }
-                  ?>
-                  <!-- <a href="?action=logout"><strong class="text-danger">Đăng xuất</strong></a> -->
-                  <?php
-                  if(isset($_GET['customer_id'])){
+                  if (isset($_GET['customer_id'])) {
                     Session::destroy();
                   }
                   ?>
@@ -93,12 +86,12 @@ $ctm = new customer();
                     echo 'Xin chào!<br>
                     <strong><a href="login.php" class="text-danger">Login</a></strong>';
                   } else {
-                    echo 'Xin chào!<br>
-                    <strong><a href="?customer_id=' . Session::get('customer_id') . '" class="text-danger">Logout</a></strong>';
+                    ?>
+                    <?php echo Session::get('customer_name') ?><br>
+                    <?php
+                    echo '<strong><a href="?customer_id=' . Session::get('customer_id') . '" class="text-danger">Logout</a></strong>';
                   }
                   ?>
-
-
                 </div>
               </div>
             </div>
@@ -163,16 +156,21 @@ $ctm = new customer();
                   ?>
                   <?php
                   $login_check = Session::get('customer_login');
-                  if ($login_check == false) {
-                    echo '';
-                  } else {
+                  if ($login_check) {
                     echo '<li class="nav-item">
                     <a class="nav-link text-white" href="profile.php">Profile</a>
                   </li>';
                   }
                   ?>
-
-
+                  <?php
+                  $customer_id = Session::get('customer_id');
+                  $check_order = $ct->check_order($customer_id);
+                  if ($check_order) {
+                    echo '<li class="nav-item">
+                    <a class="nav-link text-white" href="orderdetails.php">Ordered</a>
+                  </li>';
+                  }
+                  ?>
                   <!-- <li class="nav-item dropdown">
                     <a class="nav-link dropdown-toggle text-white" href="#">
                       Sản phẩm
@@ -185,7 +183,6 @@ $ctm = new customer();
                     </div>
                   </li> -->
                 </ul>
-
               </div>
             </div>
           </nav>

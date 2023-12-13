@@ -34,7 +34,7 @@ if($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['submit'])){
                 </div>
                 <div class="col-md-7">
                     <h2 id="namedetail"><?php echo $result_details['productName']; ?></h2>
-                    <p class="price"><?php echo 'USD $' . $result_details['price']; ?></p>
+                    <p class="price"><?php echo 'USD $' . $fm->format_currency($result_details['price']); ?></p>
                     <p><b>Condition:</b> New</p>
                     <p><b>Category:</b> <?php echo $result_details['catName']; ?></p>
                     <p><b>Brand:</b> <?php echo $result_details['brandName']; ?></p>

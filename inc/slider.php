@@ -9,15 +9,19 @@
                     <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="2" aria-label="Slide 3"></button>
                 </div>
                 <div class="carousel-inner">
-                    <div class="carousel-item active">
-                        <img src="images/pic1.jpg" class="d-block w-100" alt="pic1">
+                    <?php
+                    $get_slider = $product->show_slider();
+                    if($get_slider){
+                        while($result_slider = $get_slider->fetch_assoc()){
+                    ?>
+                    <div class="carousel-item active" id="my_slider">
+                        <img src="admin/uploads/<?php echo $result_slider['slide_image']; ?>" class="d-block w-100" alt="<?php echo $result_slider['slideName'] ?>">
                     </div>
-                    <div class="carousel-item">
-                        <img src="images/pic2.jpg" class="d-block w-100" alt="pic2">
-                    </div>
-                    <div class="carousel-item">
-                        <img src="images/pic3.jpg" class="d-block w-100" alt="pic3">
-                    </div>
+                    
+                    <?php
+                    }
+                }
+                    ?>
                 </div>
                 <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="prev">
                     <span class="carousel-control-prev-icon" aria-hidden="true"></span>

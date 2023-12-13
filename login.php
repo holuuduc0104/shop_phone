@@ -30,7 +30,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['submit'])) {
 <body>
   <div class="container-fluid">
     <form class="mx-auto form-login" action="" method="post" id="form-1">
-      <h4 class="text-center">Admin Login</h4>
+      <h4 class="text-center">Login</h4>
       <span>
         <?php
         if (isset($loginCustomer)) {

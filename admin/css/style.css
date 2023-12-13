@@ -95,7 +95,7 @@ a:focus{
     background-color: #4a568d;
     
   }
-  @media (max-width: 1920px){
+  @media (max-width: 1000px){
     #sidebar{
       margin-left: -250px;
     }
@@ -133,7 +133,9 @@ a:focus{
   font-weight: bolder;
   font-size: larger;
 }
-
+.title{
+  color: rgba(16, 75, 175, 0.952);
+}
 
 
   

@@ -28,45 +28,74 @@ if ($login_check == false) {
 
 // }
 ?>
-<div class="container-fluid mt-2 cart_bg">
+<div class="container-fluid mt-2 cart_bg" style="height: 570px; padding-top:70px;">
     <div class="row justify-content-center">
-
         <div class="col-md-10">
-            <div class="card">
+            <div class="card form_bg">
                 <div class="card-header text-white form_bg" style="font-weight:bolder;">
                     Your Profile
                 </div>
 
                 <div class="card-body p-0">
                     <table class="table table-striped catlist">
-                        <thead>
-                            <tr>
-                                <th scope="col" style="width: 700px;">Product</th>
-                                <th scope="col" style="width: 220px;">Price</th>
-                                <th scope="col" class="text-center">Action</th>
-                            </tr>
-                        </thead>
+                        
                         <tbody>
-
-                            <tr>
-                                <td>Name</td>
-                                <td>Đức</td>
-
-                                <td class="text-center">
-                                    <a href="">Edit</a>
-                                </td>
-                            </tr>
+                            <?php
+                            $id = Session::get('customer_id');
+                            $get_customers = $ctm->show_customers($id);
+                            if ($get_customers) {
+                                while ($result = $get_customers->fetch_assoc()) {
 
 
+                            ?>
+                                    <tr style="height: 70px;" >
+                                        <td class="py-4" style="width: 500px;">Name</td>
+                                        <td class="py-4">:</td>
+                                        <td class="py-4"><?php echo $result['name']; ?></td>
+                                    </tr>
+
+                                    <tr>
+                                        <td class="py-4">Email</td>
+                                        <td class="py-4">:</td>
+                                        <td class="py-4"><?php echo $result['email']; ?></td>
+                                        
+                                    </tr>
+
+                                    <tr>
+                                        <td class="py-4">Phone</td>
+                                        <td class="py-4">:</td>
+                                        <td class="py-4"><?php echo $result['phone']; ?></td>
+                                   
+                                    </tr>
+
+                                    <tr>
+                                        <td class="py-4">Address</td>
+                                        <td class="py-4">:</td>
+                                        <td class="py-4"><?php echo $result['address']; ?></td>
+                                        
+                                    </tr>
+
+                                    <!-- <tr>
+                                        <td>Password</td>
+                                        <td>:</td>
+                                        <td>Đức</td>
+                                    </tr> -->
+                            <?php
+                                }
+                            }
+                            ?>
                         </tbody>
                     </table>
 
                 </div>
             </div>
             <div class="text-center">
-                <button type="button" class="btn btn-danger my-3" style="width: 150px; height: 50px;">Checkout</button>
+            <a href="editprofile.php"><button type="button" class="btn btn-danger my-3" style="width: 150px; height: 50px;">Update Profile</button></a>
 
             </div>
         </div>
     </div>
 </div>
+<?php
+include('inc/footer.php');
+?>

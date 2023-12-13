@@ -9,10 +9,10 @@ if (isset($_GET['delid'])) {
     $id = $_GET['delid'];
     $delCat = $cat->del_category($id);
     if ($delCat == 'true') {
-        echo '<script>alert("Deleted Category Successfully.");
+        echo '<script>alert("Delete Category Successfully.");
            </script>';
     } else {
-        echo '<script>alert("Deleted Category Failed.");
+        echo '<script>alert("Delete Category Failed.");
         </script>';
     }
 }
@@ -22,23 +22,22 @@ if (isset($_GET['delid'])) {
 <div class="container-fluid mt-0">
     <div class="row justify-content-end">
         <div class="col-md-3 mb-2 mt-0">
-            <button type="button" class="btn btn-info"><a href="catadd.php">Add Category</a></button>
+        <a href="catadd.php"><button type="button" class="btn btn-info">Add Category</button></a>
         </div>
     </div>
     <div class="row justify-content-center">
-        <div class="col-md-11">
+        <div class="col-md-10">
             <div class="card">
-                <div class="card-header text-white form_bg" style="font-weight:bolder;">
+                <div class="card-header text-white form_bg fs-4" style="font-weight:bolder;">
                     Category List
                 </div>
                 <div class="card-body p-0">
                     <table class="table table-striped catlist mb-0">
                         <thead>
                             <tr>
-                                <th scope="col" style="width: 70px;">#</th>
-                                <th scope="col" style="width: 270px;">Category Name</th>
-                                <th scope="col" style="width: 20px;" class="text-center">Action</th>
-                                <th scope="col" style="width: 20px;" class="text-center">Action</th>
+                                <th scope="col" style="width: 10px;">#</th>
+                                <th scope="col" style="width: 70%;">Category Name</th>
+                                <th scope="col" style="width: 20%;" class="text-center" colspan="2">Action</th>
                             </tr>
                         </thead>
                         <tbody>

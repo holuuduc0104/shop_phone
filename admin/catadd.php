@@ -26,14 +26,14 @@ include("../classes/category.php")
         <div class="col-md-6">
             <form action="catadd.php" method="post">
                 <div class="card">
-                <div class="card-header text-white form_bg" style="font-weight:bolder;">
+                <div class="card-header text-white form_bg fs-4" style="font-weight:bolder;">
                         Add New Category
                     </div>
                     
                     <div class="card-body">
                         <div class="form-group">
-                            <label for="catName">Category Name</label>
-                            <input type="text" class="form-control" name="catName" id="catName">
+                            <label for="catName" class="mb-3 fs-5 fw-bolder">Category Name</label>
+                            <input type="text" class="form-control" name="catName" id="catName" placeholder="Enter Category Name">
                         </div>
                         <div class="form-group text-center">
                             <input type="submit" class="btn mt-4 text-white form_bg butt" value="Save" name="submit">
