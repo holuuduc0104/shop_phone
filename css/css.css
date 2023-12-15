@@ -1,140 +1,197 @@
-.header{
+.header {
   background-color: white;
 }
-a{
-    text-decoration: none;
+
+a {
+  text-decoration: none;
 
 }
-.box40{
-    width: 40px;
-    height: 40px;
-    text-align: center;
-    line-height: 40px;
-    display: inline-block;
-    border-radius: 20%;
+
+.box40 {
+  width: 40px;
+  height: 40px;
+  text-align: center;
+  line-height: 40px;
+  display: inline-block;
+  border-radius: 20%;
 }
-.footer ul{
-    list-style-type: none;
-    padding: 0px;
-    margin: 0px;
+
+.footer ul {
+  list-style-type: none;
+  padding: 0px;
+  margin: 0px;
 }
-.footer ul a{
-    text-decoration: none;
-    color: aliceblue;
+
+.footer ul a {
+  text-decoration: none;
+  color: aliceblue;
 }
-.list-cate .cate-icon{
-    width: 70px;
+
+.list-cate .cate-icon {
+  width: 70px;
 }
-.product_list img{
-    display: block;
-    margin-left: auto;
-    margin-right: auto;
-    align-items: center;
+
+.product_list img {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  align-items: center;
 }
-.pro_list h3, h4, .list-cate h6{
-    text-align: center;
+
+.pro_list h3,
+h4,
+.list-cate h6 {
+  text-align: center;
 }
-.list-cate{
-    margin-left: 30px;
+
+.list-cate {
+  margin-left: 30px;
 }
-.dropdown{
-    position: relative;
-    display: inline-block;
+
+.dropdown {
+  position: relative;
+  display: inline-block;
 }
+
 /* sub-menu */
-.dropdown-content{
-    display: none;
-    position: absolute;
-    background-color: #f5f5f5;
-    z-index: 1;
+.dropdown-content {
+  display: none;
+  position: absolute;
+  background-color: #f5f5f5;
+  z-index: 1;
 }
-.dropdown:hover .dropdown-content{
-    display: block;
+
+.dropdown:hover .dropdown-content {
+  display: block;
 }
-.product_list img{
-    width: 240px;
-    height: 240px;
+
+.product_list img {
+  width: 240px;
+  height: 240px;
 }
-.detail{
-    margin-top: 100px;
-    }
-    #namedetail{
-      color: #555;
-    }
-    .detail img{
-      width: 400px;
-    }
-    .price{
-    color: #FE980F;
-    font-size: 26px;
-    font-weight: bold;
-    margin-top: 10px;
-    }
-    input#quantity{
-      border: 1px solid #ccc;
-      font-weight: bold;
-      height: 33px;
-      text-align: center;
-      width: 100px;
-    }
-    .cart{
-      border: 1px solid rgb(229, 107, 14);
-    background-color: rgba(227, 196, 166, 0.356);
-    font-size: 15px;
-    margin-left: 20px;
-    color: rgb(229, 107, 14);
-    height: 45px;
-      width: 150px;
-      margin-left: 0px;
-    }
-    .buynow{
-      border: 1px solid rgb(229, 107, 14);
-      background-color:  rgb(229, 107, 14);
-      font-size: 15px;
-      margin-left: 20px;
-      color: white;
-      height: 45px;
-      width: 150px;
-    }
-    .cart:hover{
-      border: 1px solid rgb(229, 107, 14);
-    background-color: rgba(237, 231, 225, 0.356);
-    color: rgb(229, 107, 14);
-    
-    }
-    .buynow:hover{
-      border: 1px solid  rgb(232, 135, 61);
-      background-color:  rgb(232, 135, 61);
-      color: white;
-    }
-    .catlist th{
-      background-color: #98a2ce;
-    }
-    .catlist td{
-      background-color: #c0c8eb;
-    } 
-    .brandlist th{
-      background-color: #98a2ce;
-    }
-    .brandlist td{
-      background-color: #c0c8eb;
-    } 
-    .form_bg{
-      background-color: #7386D5;
-    }
-    .cart_bg{
-      background-color: #4a568d;
-    }
-    .link_to_brand{
-      color: black;
-    }
-    .link_to_brand:hover{
-      color: rgb(233, 27, 27);
-    }
-    .edit_pf:hover{
-    color:rgb(232, 135, 61) !important;
-    border-color: rgb(232, 135, 61) !important;
-    }
-    .success-bg{
-      background-color: #9784da;
-    }
+
+.detail {
+  margin-top: 100px;
+}
+
+#namedetail {
+  color: #282727;
+}
+
+.detail img {
+  width: 400px;
+}
+
+.price {
+  color: #f7490a;
+  font-size: 26px;
+  font-weight: bold;
+  margin-top: 10px;
+}
+
+input#quantity {
+  border: 1px solid #ccc;
+  font-weight: bold;
+  height: 33px;
+  text-align: center;
+  width: 100px;
+}
+
+.cart {
+  border: 1px solid rgb(229, 107, 14);
+  background-color: rgba(228, 187, 147, 0.356);
+  font-size: 15px;
+  margin-left: 20px;
+  color: rgb(233, 77, 5);
+  height: 45px;
+  width: 150px;
+  margin-left: 0px;
+}
+
+.buynow {
+  border: 1px solid rgb(229, 107, 14);
+  background-color: rgb(229, 107, 14);
+  font-size: 15px;
+  margin-left: 20px;
+  color: white;
+  height: 45px;
+  width: 150px;
+}
+
+.cart:hover {
+  border: 1px solid rgb(229, 107, 14);
+  background-color: rgba(237, 231, 225, 0.356);
+  color: rgb(229, 107, 14);
+
+}
+
+.buynow:hover {
+  border: 1px solid rgb(232, 135, 61);
+  background-color: rgb(232, 135, 61);
+  color: white;
+}
+
+.catlist th {
+  background-color: #98a2ce;
+}
+
+.catlist td {
+  background-color: #c0c8eb;
+}
+
+.brandlist th {
+  background-color: #98a2ce;
+}
+
+.brandlist td {
+  background-color: #c0c8eb;
+}
+
+.form_bg {
+  background-color: #7386D5;
+}
+
+.cart_bg {
+  background-color: #4a568d;
+}
+
+.link_to_brand {
+  color: black;
+}
+
+.link_to_brand:hover {
+  color: rgb(233, 27, 27);
+}
+
+.edit_pf:hover {
+  color: rgb(232, 135, 61) !important;
+  border-color: rgb(232, 135, 61) !important;
+}
+
+.success-bg {
+  background-color: #9784da;
+}
+.image-detail {
+  max-width: 100%;
+  height: auto;
+  display: block;
+  margin: 0 auto;
+  transition: opacity 0.5s ease; /* Thêm hiệu ứng chuyển động */
+}
+
+@media only screen and (max-width: 600px) {
+  .image-detail {
+      opacity: 1; /* Bắt đầu với độ trong suốt 100% */
+  }
+}
+
+@media only screen and (max-width: 400px) {
+  .image-detail {
+      opacity: 0; /* Khi màn hình nhỏ hơn 400px, ảnh sẽ biến mất hoàn toàn */
+  }
+}
+.product{
+  border-radius: 10%;
+  box-shadow: 7px 7px 5px rgb(229, 198, 188);
+
+}

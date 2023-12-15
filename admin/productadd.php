@@ -89,6 +89,12 @@ include("../classes/product.php");
                             </div>
                         </div>
                         <div class="row mb-3">
+                            <label for="product_info" class="col-md-3 col-form-label ">Information</label>
+                            <div class="col-md-9 text-black">
+                                <textarea name="product_info" rows="5" class="form-control" id="content2"></textarea>
+                            </div>
+                        </div>
+                        <div class="row mb-3">
                             <label for="price" class="col-md-3 col-form-label ">Price</label>
                             <div class="col-md-9">
                                 <input type="text" class="form-control" name="price" id="price" placeholder="Enter Price">
@@ -139,6 +145,11 @@ include("../classes/product.php");
 <script>
     ClassicEditor
         .create(document.querySelector('#content1'))
+        .catch(error => {
+            console.error(error);
+        });
+        ClassicEditor
+        .create(document.querySelector('#content2'))
         .catch(error => {
             console.error(error);
         });

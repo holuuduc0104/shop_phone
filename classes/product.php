@@ -19,6 +19,7 @@ class product
         $category = mysqli_real_escape_string($this->db->link, $data['category']);
         $brand = mysqli_real_escape_string($this->db->link, $data['brand']);
         $product_desc = mysqli_real_escape_string($this->db->link, $data['product_desc']);
+        $product_info = mysqli_real_escape_string($this->db->link, $data['product_info']);
         $price = mysqli_real_escape_string($this->db->link, $data['price']);
         $type = mysqli_real_escape_string($this->db->link, $data['type']);
 
@@ -32,12 +33,12 @@ class product
         $unique_image = substr(md5(time()), 0, 10) . '.' . $file_ext;
         $uploaded_image = "uploads/" . $unique_image;
 
-        if ($productName == "" || $category == "" || $brand == "" || $product_desc == "" || $price == "" || $type == "" || $file_name == "") {
+        if ($productName == "" || $category == "" || $brand == "" || $product_desc == "" || $product_info == "" || $price == "" || $type == "" || $file_name == "") {
             $stt = 'empty';
             return $stt;
         } else {
             move_uploaded_file($file_temp, $uploaded_image);
-            $query = "INSERT INTO tb_product(productName,brandID,catID,product_desc,price,type,image) VALUES('$productName','$brand','$category','$product_desc','$price','$type','$unique_image')";
+            $query = "INSERT INTO tb_product(productName,brandID,catID,product_desc,product_info,price,type,image) VALUES('$productName','$brand','$category','$product_desc','$product_info','$price','$type','$unique_image')";
             $result = $this->db->insert($query);
             if ($result) {
                 $stt = 'true';
@@ -64,6 +65,7 @@ class product
         $category = mysqli_real_escape_string($this->db->link, $data['category']);
         $brand = mysqli_real_escape_string($this->db->link, $data['brand']);
         $product_desc = mysqli_real_escape_string($this->db->link, $data['product_desc']);
+        $product_info = mysqli_real_escape_string($this->db->link, $data['product_info']);
         $price = mysqli_real_escape_string($this->db->link, $data['price']);
         $type = mysqli_real_escape_string($this->db->link, $data['type']);
 
@@ -77,7 +79,7 @@ class product
         $unique_image = substr(md5(time()), 0, 10) . '.' . $file_ext;
         $uploaded_image = "uploads/" . $unique_image;
 
-        if ($productName == "" || $category == "" || $brand == "" || $product_desc == "" || $price == "" || $type == "") {
+        if ($productName == "" || $category == "" || $brand == "" || $product_desc == "" || $product_info == "" || $price == "" || $type == "") {
             $stt = 'empty';
             return $stt;
         } else {
@@ -96,7 +98,8 @@ class product
         productName = '$productName', 
         brandID = '$brand', 
         catID = '$category', 
-        product_desc = '$product_desc', 
+        product_desc = '$product_desc',
+        product_info = '$product_info',  
         price = '$price', 
         type = '$type', 
         image = '$unique_image' 
@@ -107,6 +110,7 @@ class product
                 brandID = '$brand', 
                 catID = '$category', 
                 product_desc = '$product_desc', 
+                product_info = '$product_info', 
                 price = '$price', 
                 type = '$type ' 
                 WHERE productID = '$id'";
@@ -236,6 +240,12 @@ class product
     public function get_product_by_brand($brandid, $catid)
     {
         $query = "SELECT * FROM tb_product WHERE brandID = '$brandid' AND catID = '$catid' ORDER BY productID desc LIMIT 8";
+        $result = $this->db->select($query);
+        return $result;
+    }
+    public function get_product_by_cat($catid)
+    {
+        $query = "SELECT * FROM tb_product WHERE catID = '$catid' ORDER BY productID desc LIMIT 8";
         $result = $this->db->select($query);
         return $result;
     }

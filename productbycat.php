@@ -21,7 +21,7 @@ if (!isset($_GET['catid']) || $_GET['catid'] == NULL) {
                 while ($result_cat = $get_cate_name->fetch_assoc()) {
             ?>
                     <div class="text-center">
-                        <span class="badge bg-info fs-2 mb-5" style="width: 300px; height: 50px;"><?php echo $result_cat['catName']; ?></span>
+                        <span class="badge bg-danger fs-2 mb-5" style="width: 300px; height: 50px;"><?php echo $result_cat['catName']; ?></span>
                     </div>
             <?php
                 }
@@ -44,7 +44,7 @@ if (!isset($_GET['catid']) || $_GET['catid'] == NULL) {
                                 if ($get_product_by_brand) {
                                     while ($result = $get_product_by_brand->fetch_assoc()) {
                                 ?>
-                                        <div class="col-md-3 mb-3 pro_list">
+                                        <div class="col-md-3 mb-3 pro_list product">
                                             <a href="details.php?proid=<?php echo $result['productID']; ?>"><img src="admin/uploads/<?php echo $result['image']; ?>" class="img-fluid "></a>
                                             <h4><a href="details.php?proid=<?php echo $result['productID']; ?>" class="text-dark"><?php echo $result['productName'] ?></a></h4>
                                             <h3 class="text-danger"><?php echo '$' . $fm->format_currency($result['price']); ?></h3>

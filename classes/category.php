@@ -92,7 +92,7 @@ class category
 
     public function show_category_fe()
     {
-        $query = "SELECT * FROM tb_category ORDER BY catID DESC";
+        $query = "SELECT * FROM tb_category ORDER BY catID";
         $result = $this->db->select($query);
         return $result;
     }

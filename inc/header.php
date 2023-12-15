@@ -30,7 +30,7 @@ $ctm = new customer();
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.min.js" integrity="sha384-BBtl+eGJRgqQAUMxJ7pMwbEyER4l1g+O15P+16Ep7Q9Q+zqX6gSbd85u4mG4QzX+" crossorigin="anonymous"></script>
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css">
   <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js" integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r" crossorigin="anonymous"></script>
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.min.js" integrity="sha384-BBtl+eGJRgqQAUMxJ7pMwbEyER4l1g+O15P+16Ep7Q9Q+zqX6gSbd85u4mG4QzX+" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.min.js" integrity="sha384-BBtl+eGJRgqQAUMxJ7pMwbEyER4l1g+O15P+16Ep7Q9Q+zqX6gSbd85u4mG4QzX+" crossorigin="anonymous"></script>
   <link rel="stylesheet" href="css/css.css">
   <title>iShop</title>
 </head>
@@ -61,17 +61,48 @@ $ctm = new customer();
                   </div>
                 </div>
                 <div class="col-9">
-                  Tư vấn hỗ trợ<br>
-                  <strong class="text-danger">0123456789</strong>
+                  Contact<br>
+                  <strong class="text-danger">0816765067</strong>
                 </div>
               </div>
             </div>
             <div class="col">
               <div class="row">
                 <div class="col-3">
-                  <div class="fs-3 text-danger">
-                    <i class="bi bi-person-circle"></i>
-                  </div>
+                  <?php
+                  $login_check = Session::get('customer_login');
+                  if ($login_check) {
+                  ?>
+                    <nav class="navbar navbar-expand-lg" style="margin-top: -18px">
+                      <ul class="navbar-nav me-auto mb-2 mb-lg-0" style="display: flex; justify-content: space-around; width: 100%;">
+                        <li class="nav-item dropdown">
+                          <a class="nav-link" href="#">
+                            <div class="fs-3 text-danger">
+                              <i class="bi bi-person-circle"></i>
+                            </div>
+                          </a>
+                          <div class="dropdown-content" style="margin-top:-14px; z-index: 5;">
+                            <a class="nav-link text-danger fw-bold" href="profile.php">Profile</a>
+                            <?php
+                            $customer_id = Session::get('customer_id');
+                            $check_order = $ct->check_order($customer_id);
+                            if ($check_order) {
+                              echo '<a class="nav-link text-danger fw-bold" href="order_history.php">Ordered</a>';
+                            }
+                            ?>
+                          </div>
+                        </li>
+                      </ul>
+                    </nav>
+                  <?php
+                  } else {
+                  ?>
+                    <div class="fs-3 text-danger">
+                      <i class="bi bi-person-circle"></i>
+                    </div>
+                  <?php
+                  }
+                  ?>
                 </div>
                 <div class="col-9">
                   <?php
@@ -86,9 +117,9 @@ $ctm = new customer();
                     echo 'Xin chào!<br>
                     <strong><a href="login.php" class="text-danger">Login</a></strong>';
                   } else {
-                    ?>
+                  ?>
                     <?php echo Session::get('customer_name') ?><br>
-                    <?php
+                  <?php
                     echo '<strong><a href="?customer_id=' . Session::get('customer_id') . '" class="text-danger">Logout</a></strong>';
                   }
                   ?>
@@ -113,12 +144,18 @@ $ctm = new customer();
                 <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger">
                   <?php
                   $check_cart = $ct->check_cart();
-                  if ($check_cart) {
-                    $sum = Session::get("sum");
-                    $qty = Session::get("qty");
-                    echo $qty;
-                  } else {
+                  $login_check = Session::get('customer_login');
+
+                  if ($login_check == false) {
                     echo '0';
+                  } else {
+                    if ($check_cart) {
+                      $sum = Session::get("sum");
+                      $qty = Session::get("qty");
+                      echo $qty;
+                    } else {
+                      echo '0';
+                    }
                   }
                   ?>
                 </span>
@@ -132,7 +169,6 @@ $ctm = new customer();
   <section class="menu bg-danger">
     <div class="container">
       <div class="row">
-        <!-- <div class="col-md-3 text-white py-3"></div> -->
         <div class="col-md-9">
           <nav class="navbar navbar-expand-lg bg-danger">
             <div class="container-fluid">
@@ -167,7 +203,7 @@ $ctm = new customer();
                   $check_order = $ct->check_order($customer_id);
                   if ($check_order) {
                     echo '<li class="nav-item">
-                    <a class="nav-link text-white" href="orderdetails.php">Ordered</a>
+                    <a class="nav-link text-white" href="order_history.php">Ordered</a>
                   </li>';
                   }
                   ?>
@@ -182,6 +218,7 @@ $ctm = new customer();
                       <a class="dropdown-item" href="#">Something else here</a>
                     </div>
                   </li> -->
+
                 </ul>
               </div>
             </div>
@@ -189,7 +226,7 @@ $ctm = new customer();
         </div>
         <div class="col-md-1"></div>
 
-        <div class="col-md-2 text-white py-3">Danh mục sản phẩm</div>
+        <div class="col-md-2 text-white py-3">Tin tức</div>
       </div>
     </div>
   </section>

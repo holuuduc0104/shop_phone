@@ -35,7 +35,7 @@ if (isset($_GET['delid'])) {
                     <table class="table table-striped catlist mb-0">
                         <thead>
                             <tr>
-                                <th scope="col" style="width: 10px;">#</th>
+                                <th scope="col" style="width: 10px;">ID</th>
                                 <th scope="col" style="width: 70%;">Category Name</th>
                                 <th scope="col" style="width: 20%;" class="text-center" colspan="2">Action</th>
                             </tr>

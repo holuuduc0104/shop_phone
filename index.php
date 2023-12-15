@@ -19,7 +19,7 @@
                 if ($product_featered) {
                   while ($result = $product_featered->fetch_assoc()) {
                 ?>
-                    <div class="col-md-3 mb-3 pro_list">
+                    <div class="col-md-3 mb-3 pro_list product">
                       <a href="details.php?proid=<?php echo $result['productID']; ?>"><img src="admin/uploads/<?php echo $result['image']; ?>" class="img-fluid "></a>
                       <h4><a href="details.php?proid=<?php echo $result['productID']; ?>" class="text-dark"><?php echo $result['productName'] ?></a></h4>
                       <h3 class="text-danger"><?php echo '$' . $fm->format_currency($result['price']); ?></h3>
@@ -31,8 +31,43 @@
               </div>
             </div>
           </div>
+          
 
-          <div class="products mb-3">
+          <?php
+            $get_cat_name = $cat->show_category_fe();
+            if ($get_cat_name) {
+                while ($result_cat = $get_cat_name->fetch_assoc()) {
+            ?>
+                    <div class="products mb-3">
+                        <div class="product_title border-bottom text-start border-3 ms-4">
+                        <h3><strong><?php echo strtoupper($result_cat['catName']) ?></strong></h3>
+                            <!-- <h3><a href="productbybrand.php?catid=<?php echo $catid; ?>&brandid=<?php echo $result_brand['brandID']; ?>" class="link_to_brand"><strong><?php echo $result_brand['brandName']; ?></strong></a></h3> -->
+                        </div>
+                        <div class="product_list py-3">
+                            <div class="row">
+                                <?php
+                                $get_product_by_cat = $product->get_product_by_cat($result_cat['catID']);
+                                if ($get_product_by_cat) {
+                                    while ($result = $get_product_by_cat->fetch_assoc()) {
+                                ?>
+                                        <div class="col-md-3 mb-3 pro_list product">
+                                            <a href="details.php?proid=<?php echo $result['productID']; ?>"><img src="admin/uploads/<?php echo $result['image']; ?>" class="img-fluid "></a>
+                                            <h4><a href="details.php?proid=<?php echo $result['productID']; ?>" class="text-dark"><?php echo $result['productName'] ?></a></h4>
+                                            <h3 class="text-danger"><?php echo '$' . $fm->format_currency($result['price']); ?></h3>
+                                        </div>
+                                <?php
+                                    }
+                                }
+                                ?>
+                            </div>
+                        </div>
+                    </div>
+            <?php
+                }
+            }
+            ?>
+
+          <!-- <div class="products mb-3">
             <div class="product_title border-bottom text-start border-3 ms-4">
               <h3><strong>NEW PRODUCTS</strong></h3>
             </div>
@@ -55,7 +90,7 @@
                 ?>
               </div>
             </div>
-          </div>
+          </div> -->
       </section>
     </div>
     <?php

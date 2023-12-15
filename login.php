@@ -48,10 +48,10 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['submit'])) {
         <label for="password" class="form-label">Password</label>
         <input type="password" class="form-control" name="password" id="password">
         <span class="form-message"></span>
-        <!-- <div id="emailHelp" class="form-text mt-3">Forget password ?</div> -->
       </div>
 
       <input type="submit" name="submit" class="btn btn-primary mt-5" value="Login">
+      <p class="text-center mt-3">Do not have an account? <a href="register.php" style="text-decoration: none;">Register now</a></p>
     </form>
   </div>
 

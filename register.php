@@ -19,7 +19,7 @@ include("classes/customer.php");
   if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['submit'])) {
     $insertCustomer = $ctm->insert_customer($_POST);
     if ($insertCustomer == 'true') {
-        echo '<script>alert("Sign Up Successfully.");
+      echo '<script>alert("Sign Up Successfully.");
                 window.location="login.php";</script>';
     }
     // if ($insertCustomer == 'existed') {
@@ -85,8 +85,8 @@ include("classes/customer.php");
         </div> -->
         <div class="form-group">
           <input type="submit" name="submit" class="btn btn-primary mt-5" value="Sign up">
-
         </div>
+        <p class="text-center mt-3">Already have an account? <a href="login.php" style="text-decoration: none;">Login now</a></p>
       </form>
     </div>
   </div>
@@ -95,7 +95,6 @@ include("classes/customer.php");
   <script src="js/validator.js"></script>
   <script>
     document.addEventListener('DOMContentLoaded', function() {
-      // Mong muốn của chúng ta
       Validator({
         form: '#form-1',
         formGroupSelector: '.form-group',
@@ -117,21 +116,6 @@ include("classes/customer.php");
           console.log(data);
         }
       });
-
-
-      // Validator({
-      //   form: '#form-2',
-      //   formGroupSelector: '.form-group',
-      //   errorSelector: '.form-message',
-      //   rules: [
-      //     Validator.isEmail('#email'),
-      //     Validator.minLength('#password', 6),
-      //   ],
-      //   onSubmit: function (data) {
-      //     // Call API
-      //     console.log(data);
-      //   }
-      // });
     });
   </script>
 </body>

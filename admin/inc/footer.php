@@ -1,4 +1,4 @@
-
+<!-- 
 <!doctype html>
 <html lang="en">
   <head>
@@ -11,7 +11,7 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css">
     <link rel="stylesheet" href="css/css.css">
     <title>Hello, world!</title>
-  </head>
+  </head> -->
   <body>
     <body>
         <section class="footer bg-dark text-white py-4">

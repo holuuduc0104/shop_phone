@@ -119,6 +119,13 @@ include("../classes/product.php");
                         </div>
 
                         <div class="row mb-3">
+                            <label for="product_info" class="col-md-3 col-form-label ">Information</label>
+                            <div class="col-md-9 text-black">
+                                <textarea name="product_info" rows="5" class="form-control" id="content2"><?php echo $result_product['product_info'] ?></textarea>
+                            </div>
+                        </div>
+
+                        <div class="row mb-3">
                             <label for="price" class="col-md-3 col-form-label ">Price</label>
                             <div class="col-md-9">
                                 <input type="text" class="form-control" name="price" id="price" value="<?php echo $result_product['price']; ?>">
@@ -137,7 +144,7 @@ include("../classes/product.php");
                             <label for="type" class="col-md-3 col-form-label ">Product Type</label>
                             <div class="col-md-9">
                                 <select class="form-select" aria-label="Default select example" name="type">
-                                    <option selected>Select Type</option>
+                                    <option selected>-------Select Type--------</option>
                                     <?php
                                         if($result_product['type'] == 1){
                                     ?>
@@ -187,6 +194,11 @@ include("../classes/product.php");
 <script>
     ClassicEditor
         .create(document.querySelector('#content1'))
+        .catch(error => {
+            console.error(error);
+        });
+        ClassicEditor
+        .create(document.querySelector('#content2'))
         .catch(error => {
             console.error(error);
         });

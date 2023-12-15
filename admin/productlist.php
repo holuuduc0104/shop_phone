@@ -38,13 +38,13 @@ if (isset($_GET['delid'])) {
                         <thead>
                             <tr>
                                 <th scope="col" style="width: 3%;">ID</th>
-                                <th scope="col" style="width: 20%;">Name</th>
+                                <th scope="col" style="width: 25%;">Name</th>
                                 <th scope="col" style="width: 7%;">Price</th>
-                                <th scope="col" style="width: 10%;">Image</th>
-                                <th scope="col" style="width: 10%;">Category</th>
+                                <th scope="col" style="width: 15%;">Image</th>
+                                <th scope="col" style="width: 15%;">Category</th>
                                 <th scope="col" style="width: 10%;">Brand</th>
-                                <th scope="col" style="width: 20%;">Description</th>
-                                <th scope="col" style="width: 10%;">Type</th>
+                                <!-- <th scope="col" style="width: 20%;">Description</th> -->
+                                <th scope="col" style="width: 15%;">Type</th>
                                 <th scope="col" class="text-center" colspan="2">Action</th>
                             </tr>
                         </thead>
@@ -63,7 +63,7 @@ if (isset($_GET['delid'])) {
                                         <td><img src="uploads/<?php echo $result['image']; ?>" width="100px" class="img-fluid"></td>
                                         <td><?php echo $result['catName']; ?></td>
                                         <td><?php echo $result['brandName']; ?></td>
-                                        <td><?php echo $fm->textShorten($result['product_desc'], 25); ?></td>
+                                        <!-- <td><?php echo $fm->textShorten($result['product_desc'], 25); ?></td> -->
                                         <td><?php
                                             if ($result['type'] == 1) {
                                                 echo 'Featured';
@@ -83,7 +83,7 @@ if (isset($_GET['delid'])) {
                                         </td>
                                         <td class="text-center">
                                             <button type="button" class="btn btn-danger" style="width: 80px; height:35px;">
-                                                <a onclick="return confirm('Are you want to delete?')" href="?delid=<?php echo $result['productID']; ?>" style="display: block;">Delete</a>
+                                                <a onclick="return confirm('Do you want to delete?')" href="?delid=<?php echo $result['productID']; ?>" style="display: block;">Delete</a>
                                             </button>
                                         </td>
                                     </tr>
