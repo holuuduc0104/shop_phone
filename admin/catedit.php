@@ -36,11 +36,6 @@ if($_SERVER['REQUEST_METHOD'] === 'POST'){
                         Edit Category
                     </div>
                     <?php
-                    // if (isset($updateCat)) {
-                    //     echo $updateCat;
-                    // }
-                    ?>
-                    <?php
                     $get_cate_name = $cat->getcatebyId($id);
                     if ($get_cate_name) {
                         while ($result = $get_cate_name->fetch_assoc()) {
@@ -49,7 +44,7 @@ if($_SERVER['REQUEST_METHOD'] === 'POST'){
                     ?>
                             <div class="card-body">
                                 <div class="form-group">
-                                    <label for="catName">Category Name</label>
+                                    <label for="catName" class="mb-3 fw-bolder fs-5">Category Name</label>
                                     <input type="text" class="form-control" name="catName" id="catName" value="<?php echo $result['catName']; ?>">
                                 </div>
                                 <div class="form-group text-center">

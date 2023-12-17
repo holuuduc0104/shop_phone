@@ -8,7 +8,7 @@ include("../classes/product.php");
 <?php
     $pd = new product();
     if($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['submit'])){
-        $insertProduct = $pd->insert_product($_POST,$_FILES);
+        $insertProduct = $pd->insert_product($_POST);
         if ($insertProduct == 'empty') {
             echo '<script>alert("Field must be not empty!");
                 </script>';

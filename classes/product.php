@@ -13,7 +13,7 @@ class product
         $this->db = new Database();
         $this->fm = new Format();
     }
-    public function insert_product($data, $files)
+    public function insert_product($data)
     {
         $productName = mysqli_real_escape_string($this->db->link, $data['productName']);
         $category = mysqli_real_escape_string($this->db->link, $data['category']);
@@ -59,7 +59,7 @@ class product
         return $result;
     }
 
-    public function update_product($data, $file, $id)
+    public function update_product($data, $id)
     {
         $productName = mysqli_real_escape_string($this->db->link, $data['productName']);
         $category = mysqli_real_escape_string($this->db->link, $data['category']);
@@ -84,7 +84,7 @@ class product
             return $stt;
         } else {
             if (!empty($file_name)) {
-                if ($file_size > 10240) {
+                if ($file_size > 819200) {
                     $stt = 'bigfile';
                     // $alert = "<span class='success'>Image Size should be less than 10MB!</span>";
                     return $stt;
@@ -230,10 +230,28 @@ class product
         $result = $this->db->select($query);
         return $result;
     }
+    // public function get_brand_by_cat($id)
+    // {
+    //     $query = "SELECT tb_product.*, tb_brand.brandName 
+    //     FROM tb_product INNER JOIN tb_brand ON tb_product.brandID = tb_brand.brandID WHERE catID = '$id'";
+    //     $result = $this->db->select($query);
+    //     return $result;
+    // }
     public function get_brand_by_cat($id)
     {
-        $query = "SELECT tb_product.*, tb_brand.brandName 
-        FROM tb_product INNER JOIN tb_brand ON tb_product.brandID = tb_brand.brandID WHERE catID = '$id'";
+        $query = "SELECT DISTINCT tb_product.brandID, tb_brand.brandName 
+              FROM tb_product 
+              INNER JOIN tb_brand ON tb_product.brandID = tb_brand.brandID 
+              WHERE catID = '$id'";
+        $result = $this->db->select($query);
+        return $result;
+    }
+    public function get_brandlogo_by_cat($id)
+    {
+        $query = "SELECT DISTINCT tb_product.brandID, tb_brand.brandLogo 
+              FROM tb_product 
+              INNER JOIN tb_brand ON tb_product.brandID = tb_brand.brandID 
+              WHERE catID = '$id'";
         $result = $this->db->select($query);
         return $result;
     }
@@ -246,6 +264,12 @@ class product
     public function get_product_by_cat($catid)
     {
         $query = "SELECT * FROM tb_product WHERE catID = '$catid' ORDER BY productID desc LIMIT 8";
+        $result = $this->db->select($query);
+        return $result;
+    }
+    public function getall_product_by_cat($catid)
+    {
+        $query = "SELECT * FROM tb_product WHERE catID = '$catid' ORDER BY productID desc";
         $result = $this->db->select($query);
         return $result;
     }

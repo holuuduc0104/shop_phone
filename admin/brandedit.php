@@ -8,19 +8,24 @@ include("../classes/brand.php")
 $brand = new brand();
 if (!isset($_GET['brandid']) || $_GET['brandid'] == NULL) {
     echo "<script>window.location='brandlist.php'</script>";
-}else{
+} else {
     $id = $_GET['brandid'];
 }
-if($_SERVER['REQUEST_METHOD'] === 'POST'){
-    $brandName = $_POST['brandName'];
-    $updateBrand = $brand->update_brand($brandName,$id);
+if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['submit'])) {
+    $updateBrand = $brand->update_brand($_POST, $id);
     if ($updateBrand == 'empty') {
-        echo '<script>alert("Brand must be not empty!");
+        echo '<script>alert("Field must be not empty!");
             </script>';
-    }else if($updateBrand == 'true') {
+    } else if ($updateBrand == 'bigfile') {
+        echo '<script>alert("Image Size should be less than 800KB!");
+       </script>';
+    } else if ($updateBrand == 'wrongfile') {
+        echo '<script>alert("You can upload only: .jpg, .jpeg, .png, .gif, .webp");
+        </script>';
+    } else if ($updateBrand == 'true') {
         echo '<script>alert("Update Brand Successfully.");
-            window.location="brandlist.php";</script>';
-    }else{
+        window.location="brandlist.php";</script>';
+    } else {
         echo '<script>alert("Update Brand Failed.");
         window.location="brandlist.php";</script>';
     }
@@ -30,12 +35,12 @@ if($_SERVER['REQUEST_METHOD'] === 'POST'){
 <div class="container mt-5">
     <div class="row justify-content-center">
         <div class="col-md-6">
-            <form action="" method="post">
+            <form action="" method="post" enctype="multipart/form-data">
                 <div class="card">
-                <div class="card-header text-white form_bg fs-4" style="font-weight:bolder;">
+                    <div class="card-header text-white form_bg fs-4" style="font-weight:bolder;">
                         Edit Brand
                     </div>
-                    
+
                     <?php
                     $get_brand_name = $brand->getbrandbyId($id);
                     if ($get_brand_name) {
@@ -45,8 +50,13 @@ if($_SERVER['REQUEST_METHOD'] === 'POST'){
                     ?>
                             <div class="card-body">
                                 <div class="form-group">
-                                    <label for="brandName">Brand Name</label>
+                                    <label for="brandName" class="mb-3 fw-bolder fs-5">Brand Name</label>
                                     <input type="text" class="form-control" name="brandName" id="brandName" value="<?php echo $result['brandName']; ?>">
+                                </div>
+                                <div class="form-group">
+                                    <label for="brandLogo" class="my-3 fw-bolder fs-5">Logo</label><br>
+                                <img src="uploads/<?php echo $result['brandLogo']; ?>" style="width: 100px"><br>
+                                    <input type="file" class="form-control" name="brandLogo" id="brandLogo" value="<?php echo $result['brandLogo']; ?>">
                                 </div>
                                 <div class="form-group text-center">
                                     <input type="submit" class="btn mt-4 text-white form_bg butt" value="Update" name="submit">

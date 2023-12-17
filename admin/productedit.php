@@ -13,18 +13,17 @@ include("../classes/product.php");
         $id = $_GET['productid'];
     }
     if($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['submit'])){
-        $updateProduct = $pd->update_product($_POST,$_FILES,$id);
+        $updateProduct = $pd->update_product($_POST,$id);
         if ($updateProduct == 'empty') {
             echo '<script>alert("Field must be not empty!");
                 </script>';   
         }else if($updateProduct == 'bigfile') {
-            echo '<script>alert("Image Size should be less than 10MB!");
+            echo '<script>alert("Image Size should be less than 800KB!");
            </script>';
         }else if($updateProduct == 'wrongfile') {
             echo '<script>alert("You can upload only: .jpg, .jpeg, .png, .gif, .webp");
             </script>';
-        }
-        else if($updateProduct == 'true') {
+        }else if($updateProduct == 'true') {
             echo '<script>alert("Update Product Successfully.");
             window.location="productlist.php";</script>';
         }else{

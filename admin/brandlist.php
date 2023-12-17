@@ -35,8 +35,9 @@ if (isset($_GET['delid'])) {
                     <table class="table table-striped brandlist mb-0">
                         <thead>
                             <tr>
-                                <th scope="col" style="width: 10%;">#</th>
-                                <th scope="col" style="width: 70%;">Brand Name</th>
+                                <th scope="col" style="width: 10%;">No.</th>
+                                <th scope="col" style="width: 50%;">Brand Name</th>
+                                <th scope="col" style="width: 20%;">Logo</th>
                                 <th scope="col" style="width: 20%;" class="text-center" colspan="2">Action</th>
                             </tr>
                         </thead>
@@ -52,7 +53,7 @@ if (isset($_GET['delid'])) {
                                     <tr>
                                         <td scope="row"><?php echo $i; ?></td>
                                         <td><?php echo $result['brandName']; ?></td>
-
+                                        <td><img src="uploads/<?php echo $result['brandLogo']; ?>" width="100px" class="img-fluid"></td>
                                         <td class="text-center">
                                             <button type="button" class="btn btn-warning" style="width: 100px; height:35px;">
                                                 <a href="brandedit.php?brandid=<?php echo $result['brandID']; ?>" style="display: block;">Edit</a>

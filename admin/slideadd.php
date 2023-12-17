@@ -11,7 +11,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['submit'])) {
         echo '<script>alert("Field must be not empty!");
                 </script>';
     } else if ($insertSlide == 'bigfile') {
-        echo '<script>alert("Image Size should be less than 10MB!");
+        echo '<script>alert("Image Size should be less than 800KB!");
            </script>';
     } else if ($insertSlide == 'wrongfile') {
         echo '<script>alert("You can upload only: .jpg, .jpeg, .png, .gif, .webp");

@@ -43,7 +43,6 @@ if (isset($_GET['delid'])) {
                                 <th scope="col" style="width: 15%;">Image</th>
                                 <th scope="col" style="width: 15%;">Category</th>
                                 <th scope="col" style="width: 10%;">Brand</th>
-                                <!-- <th scope="col" style="width: 20%;">Description</th> -->
                                 <th scope="col" style="width: 15%;">Type</th>
                                 <th scope="col" class="text-center" colspan="2">Action</th>
                             </tr>
@@ -63,22 +62,16 @@ if (isset($_GET['delid'])) {
                                         <td><img src="uploads/<?php echo $result['image']; ?>" width="100px" class="img-fluid"></td>
                                         <td><?php echo $result['catName']; ?></td>
                                         <td><?php echo $result['brandName']; ?></td>
-                                        <!-- <td><?php echo $fm->textShorten($result['product_desc'], 25); ?></td> -->
                                         <td><?php
                                             if ($result['type'] == 1) {
                                                 echo 'Featured';
                                             } else {
                                                 echo 'Non-Featured';
                                             }
-
                                             ?></td>
-
-
-
                                         <td class="text-center">
                                             <button type="button" class="btn btn-warning" style="width: 80px; height:35px;">
                                                 <a href="productedit.php?productid=<?php echo $result['productID']; ?>" style="display: block;">Edit</a>
-
                                             </button>
                                         </td>
                                         <td class="text-center">

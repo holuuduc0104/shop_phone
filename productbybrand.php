@@ -20,18 +20,6 @@ if (!isset($_GET['brandid']) || $_GET['brandid'] == NULL) {
 
     <section class="content my-5">
         <div class="container">
-            <?php
-            $get_brand_name = $brand->getbrandbyid_fe($brandid);
-            if ($get_brand_name) {
-                while ($result_brand = $get_brand_name->fetch_assoc()) {
-            ?>
-                    <div class="text-center">
-                        <span class="badge bg-info fs-2 mb-5" style="width: 300px; height: 50px;"><?php echo $result_brand['brandName']; ?></span>
-                    </div>
-            <?php
-                }
-            }
-            ?>
 
             <div class="products mb-3">
                 <div class="product_list py-3">
@@ -41,10 +29,13 @@ if (!isset($_GET['brandid']) || $_GET['brandid'] == NULL) {
                         if ($getall_product_by_brand) {
                             while ($result = $getall_product_by_brand->fetch_assoc()) {
                         ?>
-                                <div class="col-md-3 mb-3 pro_list">
+                                <div class="col-md-3 pro_list">
+                                    <div class="product pt-3 px-3">
                                     <a href="details.php?proid=<?php echo $result['productID']; ?>"><img src="admin/uploads/<?php echo $result['image']; ?>" class="img-fluid "></a>
                                     <h4><a href="details.php?proid=<?php echo $result['productID']; ?>" class="text-dark"><?php echo $result['productName'] ?></a></h4>
                                     <h3 class="text-danger"><?php echo '$' . $fm->format_currency($result['price']); ?></h3>
+                                    </div>
+                                    
                                 </div>
                         <?php
                             }
