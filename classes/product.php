@@ -255,15 +255,24 @@ class product
         $result = $this->db->select($query);
         return $result;
     }
-    public function get_product_by_brand($brandid, $catid)
-    {
-        $query = "SELECT * FROM tb_product WHERE brandID = '$brandid' AND catID = '$catid' ORDER BY productID desc LIMIT 8";
-        $result = $this->db->select($query);
-        return $result;
-    }
+    
     public function get_product_by_cat($catid)
     {
         $query = "SELECT * FROM tb_product WHERE catID = '$catid' ORDER BY productID desc LIMIT 8";
+        $result = $this->db->select($query);
+        return $result;
+    }
+    public function get_product_by_cat_page($catid)
+    {   
+        $limit = 16;
+        if(!isset($_GET['page']))
+        {
+            $current_page = 1;
+        }else{
+            $current_page = $_GET['page'];
+        }
+        $start = ($current_page - 1) * $limit;
+        $query = "SELECT * FROM tb_product WHERE catID = '$catid' ORDER BY productID desc LIMIT $start, $limit";
         $result = $this->db->select($query);
         return $result;
     }
@@ -279,11 +288,31 @@ class product
         $result = $this->db->select($query);
         return $result;
     }
+    public function get_product_by_brand($brandid, $catid)
+    {
+        $limit = 16;
+        if(!isset($_GET['page']))
+        {
+            $current_page = 1;
+        }else{
+            $current_page = $_GET['page'];
+        }
+        $start = ($current_page - 1) * $limit;
+        $query = "SELECT * FROM tb_product WHERE brandID = '$brandid' AND catID = '$catid' ORDER BY productID desc LIMIT $start, $limit";
+        $result = $this->db->select($query);
+        return $result;
+    }
     public function show_slider()
     {
         $query = "SELECT * FROM tb_slider WHERE type = '1' ORDER BY slideID DESC";
         $result = $this->db->select($query);
         return $result;
     }
+    // public function searching($key)
+    // {
+    //     $query = "SELECT * FROM tb_product WHERE productName LIKE '%key%' OR  ORDER BY slideID DESC";
+    //     $result = $this->db->select($query);
+    //     return $result;
+    // }
 }
 ?>

@@ -136,7 +136,9 @@ a:focus{
 .title{
   color: rgba(16, 75, 175, 0.952);
 }
-
+.button{
+  border-radius: 15px !important;
+}
 
   
   

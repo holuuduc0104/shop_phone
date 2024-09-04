@@ -44,7 +44,7 @@ h4,
   text-align: center;
 }
 .pro_list{
-  margin-bottom: 60px;
+  margin-bottom: 80px;
 }
 .product{
   border-radius: 10%;
@@ -62,7 +62,6 @@ h4,
   display:block;
 }
 
-/* sub-menu */
 .dropdown-content {
   display: none;
   position: absolute;
@@ -73,11 +72,6 @@ h4,
 .dropdown:hover .dropdown-menu {
   display: block;
 }
-
-/* .product_list img {
-  width: 240px;
-  height: 240px;
-} */
 
 .detail {
   margin-top: 100px;
@@ -116,7 +110,14 @@ input#quantity {
   width: 150px;
   margin-left: 0px;
 }
-
+.cart2 {
+  border: 1px solid rgb(229, 107, 14);
+  background-color: rgba(228, 187, 147, 0.356);
+  font-size: 15px;
+  color: rgb(233, 77, 5);
+  height: 35px;
+  width: 100px;
+}
 .buynow {
   border: 1px solid rgb(229, 107, 14);
   background-color: rgb(229, 107, 14);
@@ -127,11 +128,10 @@ input#quantity {
   width: 150px;
 }
 
-.cart:hover {
+.cart:hover, .cart2:hover {
   border: 1px solid rgb(229, 107, 14);
   background-color: rgba(237, 231, 225, 0.356);
   color: rgb(229, 107, 14);
-
 }
 
 .buynow:hover {
@@ -141,27 +141,19 @@ input#quantity {
 }
 
 .catlist th {
-  background-color: #98a2ce;
+  background-color: #ffd7d7;
 }
 
 .catlist td {
-  background-color: #c0c8eb;
-}
-
-.brandlist th {
-  background-color: #98a2ce;
-}
-
-.brandlist td {
-  background-color: #c0c8eb;
+  background-color: #ffffff;
 }
 
 .form_bg {
-  background-color: #7386D5;
+  background-color: #ea4c4c;
 }
 
 .cart_bg {
-  background-color: #4a568d;
+  background-color: #ffffffda;
 }
 
 .link_to_brand {
@@ -178,14 +170,7 @@ input#quantity {
 }
 
 .success-bg {
-  background-color: #9784da;
-}
-.image-detail {
-  max-width: 100%;
-  height: auto;
-  display: block;
-  margin: 0 auto;
-  transition: opacity 0.5s ease; /* Thêm hiệu ứng chuyển động */
+  background-color: #f7a0a0;
 }
 
 
@@ -195,7 +180,7 @@ background-color: rgb(196, 21, 21);
 .brandlogo{
   align-items: center;
     border: 1px solid #e5e7eb;
-    border-radius: 4px;
+    border-radius: 20px;
     display: flex;
     height: 40px;
     width: 150px;

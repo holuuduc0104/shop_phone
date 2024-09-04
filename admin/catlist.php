@@ -10,9 +10,11 @@ if (isset($_GET['delid'])) {
     $delCat = $cat->del_category($id);
     if ($delCat == 'true') {
         echo '<script>alert("Delete Category Successfully.");
+        window.location="catlist.php";
            </script>';
     } else {
         echo '<script>alert("Delete Category Failed.");
+        window.location="catlist.php";
         </script>';
     }
 }
@@ -22,7 +24,7 @@ if (isset($_GET['delid'])) {
 <div class="container-fluid mt-0">
     <div class="row justify-content-end">
         <div class="col-md-3 mb-2 mt-0">
-        <a href="catadd.php"><button type="button" class="btn btn-info">Add Category</button></a>
+            <a href="catadd.php"><button type="button" class="btn btn-info">Add Category</button></a>
         </div>
     </div>
     <div class="row justify-content-center">
@@ -53,13 +55,13 @@ if (isset($_GET['delid'])) {
                                         <td scope="row"><?php echo $i; ?></td>
                                         <td><?php echo $result['catName']; ?></td>
                                         <td class="text-center">
-                                            <button type="button" class="btn btn-warning" style="width: 100px; height:35px;">
+                                            <button type="button" class="btn btn-warning button" style="width: 100px; height:35px;">
                                                 <a href="catedit.php?catid=<?php echo $result['catID']; ?>" style="display: block;">Edit</a>
                                             </button>
                                         </td>
                                         <td class="text-center">
-                                            <button type="button" class="btn btn-danger" style="width: 100px; height:35px;">
-                                                <a onclick="return confirm('Are you want to delete?')" href="?delid=<?php echo $result['catID']; ?>" style="display: block;">Delete</a>
+                                            <button type="button" class="btn btn-danger button" style="width: 100px; height:35px;">
+                                                <a onclick="return confirm('Do you want to delete?')" href="?delid=<?php echo $result['catID']; ?>" style="display: block;">Delete</a>
                                             </button>
                                         </td>
                                     </tr>

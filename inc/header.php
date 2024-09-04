@@ -28,16 +28,12 @@ if (isset($_GET['customer_id'])) {
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <!-- <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous"> -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" integrity="sha512-z3gLpd7yknf1YoNbCzqRKc4qyor8gaKU1qmn+CShxbuBusANI9QpRohGBreCFkKxLhei6S9CQXFEbbKuqLg0DA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
-  <!-- <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js" integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r" crossorigin="anonymous"></script> -->
-  <!-- <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.min.js" integrity="sha384-BBtl+eGJRgqQAUMxJ7pMwbEyER4l1g+O15P+16Ep7Q9Q+zqX6gSbd85u4mG4QzX+" crossorigin="anonymous"></script> -->
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css">
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
   <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js" integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r" crossorigin="anonymous"></script>
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
-  <!-- <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js" integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r" crossorigin="anonymous"></script>
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.min.js" integrity="sha384-BBtl+eGJRgqQAUMxJ7pMwbEyER4l1g+O15P+16Ep7Q9Q+zqX6gSbd85u4mG4QzX+" crossorigin="anonymous"></script> -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.min.js" integrity="sha384-BBtl+eGJRgqQAUMxJ7pMwbEyER4l1g+O15P+16Ep7Q9Q+zqX6gSbd85u4mG4QzX+" crossorigin="anonymous"></script>
   <link rel="stylesheet" href="css/css.css">
   <title>iShop</title>
 </head>
@@ -50,14 +46,19 @@ if (isset($_GET['customer_id'])) {
           <a href="index.php"><img src="images/logo.png" class="img-fluid" alt="Logo"></a>
         </div>
         <div class="col-md-4 py-4">
+        <form action="search.php" method="GET">
           <div class="input-group mb-3">
-            <input type="text" class="form-control" placeholder="Tìm kiếm sản phẩm..." aria-label="Tìm kiếm sản phẩm..." aria-describedby="basic-addon2">
-            <span class="input-group-text" id="basic-addon2">
+            <input type="text" name="key" class="form-control" placeholder="Search" aria-label="Search" aria-describedby="basic-addon2">
+            <input type="submit" name="search" value="Search" class="border border-0">
+            <!-- <a href="search.php?key=">
+            <span class="input-group-text" style="height:40px" id="basic-addon2">
               <i class="fa-solid fa-magnifying-glass"></i>
             </span>
+            </a> -->
           </div>
+          </form>
         </div>
-        <div class="col-md-3 py-4">
+        <div class="col-md-3 pt-4">
           <div class="row">
             <div class="col">
               <div class="row">
@@ -79,27 +80,25 @@ if (isset($_GET['customer_id'])) {
                   $login_check = Session::get('customer_login');
                   if ($login_check) {
                   ?>
-                    <nav class="navbar navbar-expand-lg" style="margin-top: -18px">
-                      <ul class="navbar-nav me-auto mb-2 mb-lg-0" style="display: flex; justify-content: space-around; width: 100%;">
+                    <div>
+                      <ul class="navbar-nav me-auto" style="width:50px; position: relative;">
                         <li class="nav-item dropdown">
-                          <a class="nav-link" href="#">
-                            <div class="fs-3 text-danger">
-                              <i class="bi bi-person-circle"></i>
-                            </div>
+                          <a class="fs-3 text-danger" href="profile.php">
+                            <i class="bi bi-person-circle"></i>
                           </a>
-                          <div class="dropdown-content" style="margin-top:-14px; z-index: 5;">
-                            <a class="nav-link text-danger fw-bold" href="profile.php">Profile</a>
+                          <ul class="dropdown-menu bg-danger" style="width:20px;position: absolute;z-index:5">
+                            <li><a class="dropdown-item text-white menu" href="profile.php">Profile</a></li>
                             <?php
                             $customer_id = Session::get('customer_id');
                             $check_order = $ct->check_order($customer_id);
                             if ($check_order) {
-                              echo '<a class="nav-link text-danger fw-bold" href="order_history.php">Ordered</a>';
+                              echo '<li><a class="dropdown-item text-white menu" href="order_history.php">Ordered</a></li>';
                             }
                             ?>
-                          </div>
+                          </ul>
                         </li>
                       </ul>
-                    </nav>
+                    </div>
                   <?php
                   } else {
                   ?>
@@ -114,7 +113,7 @@ if (isset($_GET['customer_id'])) {
                   <?php
                   $login_check = Session::get('customer_login');
                   if ($login_check == false) {
-                    echo 'Xin chào!<br>
+                    echo 'Hello!<br>
                     <strong><a href="login.php" class="text-danger">Login</a></strong>';
                   } else {
                   ?>
@@ -131,16 +130,13 @@ if (isset($_GET['customer_id'])) {
         <div class="col-md-2 py-4">
           <div class="row">
             <div class="col">
-              <a href="#" class="position-relative">
-                <span class="fs-3"><i class="bi bi-heart"></i></span>
-                <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger">
-                  0
-                </span>
+              <a href="favorite.php" class="position-relative">
+                <span class="fs-2"><i class="bi bi-heart-fill text-danger"></i></span>
               </a>
             </div>
             <div class="col">
               <a href="cart.php" class="position-relative">
-                <span class="fs-3"><i class="bi bi-cart4"></i></span>
+                <span class="fs-3 text-danger"><i class="bi bi-cart4"></i></span>
                 <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger">
                   <?php
                   $check_cart = $ct->check_cart();
@@ -202,23 +198,6 @@ if (isset($_GET['customer_id'])) {
                     }
                   }
                   ?>
-                  <!-- <?php
-                        $login_check = Session::get('customer_login');
-                        if ($login_check) {
-                          echo '<li class="nav-item">
-                    <a class="nav-link text-white" href="profile.php">Profile</a>
-                  </li>';
-                        }
-                        ?>
-                  <?php
-                  $customer_id = Session::get('customer_id');
-                  $check_order = $ct->check_order($customer_id);
-                  if ($check_order) {
-                    echo '<li class="nav-item">
-                    <a class="nav-link text-white" href="order_history.php">Ordered</a>
-                  </li>';
-                  }
-                  ?> -->
                   <!-- <li class="nav-item dropdown">
                     <a class="nav-link dropdown-toggle text-white" href="#">
                       Sản phẩm

@@ -18,18 +18,60 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['submit'])) {
             </script>';
     }
 }
+if (isset($_GET['favid'])) {
+    $favid = $_GET['favid'];
+    $addtofav = $ct->add_to_favorite($favid);
+}
+if (isset($_GET['delid'])) {
+    $delid = $_GET['delid'];
+    $delfavo = $ct->del_favorite($delid);
+}
 ?>
 <div class="container detail mt-5">
     <?php
     $get_product_details = $product->get_details($id);
     if ($get_product_details) {
         while ($result_details = $get_product_details->fetch_assoc()) {
-
-
     ?>
             <div class="row">
                 <div class="col-md-6">
                     <img src="admin/uploads/<?php echo $result_details['image']; ?>">
+                    <div>
+                        <?php
+                        $login_check = Session::get('customer_login');
+                        if ($login_check == false) {
+                        ?>
+                            <button type="button" class="btn button ms-5">
+                                <span class="fs-3"><i class="bi bi-heart text-danger"></i></span>
+                            </button>
+                        <?php
+                        } else {
+                        ?>
+                            <?php
+                            $check_favorite = $ct->check_favorite($id);
+                            if ($check_favorite == 'false') {
+                            ?>
+                                <button type="button" class="btn button ms-5">
+                                    <a href="?proid=<?php echo $id; ?>&favid=<?php echo $id; ?>">
+                                        <span class="fs-3"><i class="bi bi-heart text-danger"></i></span>
+                                    </a>
+                                </button>
+                            <?php
+                            } else {
+                            ?>
+                                <button type="button" class="btn button ms-5">
+                                    <a href="?proid=<?php echo $id; ?>&delid=<?php echo $id; ?>">
+                                        <span class="fs-3"><i class="bi bi-heart-fill text-danger"></i></i></span>
+                                    </a>
+                                </button>
+                            <?php
+                            }
+                            ?>
+                        <?php
+                        }
+                        ?>
+
+                    </div>
                 </div>
                 <div class="col-md-6">
                     <h2 id="namedetail"><?php echo $result_details['productName']; ?></h2>
@@ -39,15 +81,23 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['submit'])) {
                     <p><b>Brand:</b> <?php echo $result_details['brandName']; ?></p>
                     <label for="">Quantity: &nbsp; &nbsp; &nbsp;</label>
                     <div class="add-cart">
-                        <form action="" method="post">
+                        <?php
+                        $login_check = Session::get('customer_login');
+                        if ($login_check == false) {
+                        ?>
+                            <input type="number" value="1" id="quantity" name="quantity" min="1"><br>
+                            <button name="submit" class="btn btn-default cart mt-5">Add to cart</button>
+                        <?php
+                        } else {
+                        ?>
+                            <form action="" method="post">
                             <input type="number" value="1" id="quantity" name="quantity" min="1"><br>
                             <input type="submit" name="submit" class="btn btn-default cart mt-5" value="Add to cart">
                         </form>
+                        <?php
+                        }
+                        ?>
                     </div>
-
-                    <!-- <input type="number" value="1" id="quantity"><br>
-            <button type="button" class="btn btn-default cart mt-5">Add to cart</button>
-            <button type="button" class="btn btn-default buynow mt-5">Buy Now</button> -->
                 </div>
             </div>
             <div class="container mt-5">
@@ -55,9 +105,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['submit'])) {
                     <h3><strong>Detail</strong></h3>
                 </div>
                 <div class="row">
-                    <!-- <div class="col-md-3 img-detail" style="margin-left: -150px">
-                    <img src="images/detail-left.webp" alt="left" class="">
-                </div> -->
                     <div class="col-md-6 my-5">
                         <p><?php echo $result_details['product_desc']; ?></p>
                     </div>
@@ -73,56 +120,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['submit'])) {
         }
     }
     ?>
-    <!-- <div class="similar_products mb-3">
-        <div class="product_title border-bottom border-3 text-start">
-            <h3><strong>Similar Products</strong></h3>
-        </div>
-        <div class="product_list py-3">
-            <div class="row">
-                <div class="col-md-3 mb-3">
-                    <img src="images/product.webp" class="img-fluid ">
-                    <h4>Product Name</h4>
-                    <h3>1000$</h3>
-                </div>
-                <div class="col-md-3 mb-3">
-                    <img src="images/product.webp" class="img-fluid">
-                    <h4>Product Name</h4>
-                    <h3>1000$</h3>
-                </div>
-                <div class="col-md-3 mb-3">
-                    <img src="images/product.webp" class="img-fluid">
-                    <h4>Product Name</h4>
-                    <h3>1000$</h3>
-                </div>
-                <div class="col-md-3 mb-3">
-                    <img src="images/product.webp" class="img-fluid">
-                    <h4>Product Name</h4>
-                    <h3>1000$</h3>
-                </div>
-                <div class="col-md-3 mb-3">
-                    <img src="images/product.webp" class="img-fluid">
-                    <h4>Product Name</h4>
-                    <h3>1000$</h3>
-                </div>
-                <div class="col-md-3 mb-3">
-                    <img src="images/product.webp" class="img-fluid">
-                    <h4>Product Name</h4>
-                    <h3>1000$</h3>
-                </div>
-                <div class="col-md-3 mb-3">
-                    <img src="images/product.webp" class="img-fluid">
-                    <h4>Product Name</h4>
-                    <h3>1000$</h3>
-                </div>
-                <div class="col-md-3 mb-3">
-                    <img src="images/product.webp" class="img-fluid ">
-                    <h4>Product Name</h4>
-                    <h3>1000$</h3>
-                </div>
-
-            </div>
-        </div>
-    </div> -->
 </div>
 <?php
 include("inc/footer.php");

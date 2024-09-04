@@ -73,7 +73,7 @@ if (isset($_GET['slideid']) && isset($_GET['type'])) {
                                         </td>
 
                                         <td class="text-center">
-                                            <button type="button" class="btn btn-danger" style="width: 80px; height:35px;">
+                                            <button type="button" class="btn btn-danger button" style="width: 80px; height:35px;">
                                                 <a onclick="return confirm('Are you want to delete?')" href="?delid=<?php echo $result['slideID']; ?>" style="display: block;">Delete</a>
                                             </button>
                                         </td>

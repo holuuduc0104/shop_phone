@@ -94,7 +94,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['save'])) {
                     </div>
             </div>
             <div class="text-center">
-                <input type="submit" class="btn btn-danger my-3" style="width: 150px; height: 50px;" value="Save" name="save">
+                <input type="submit" class="btn btn-danger my-3" style="width: 150px; height: 50px;" value="Update" name="save">
             </div>
             </form>
         </div>

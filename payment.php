@@ -120,10 +120,7 @@ if (isset($_GET['orderid']) && $_GET['orderid'] == 'order') {
     <div class="row justify-content-center mt-3">
         <div class="col-md-12">
             <div class="card form_bg">
-                <!-- <div class="card-header text-white form_bg" style="font-weight:bolder;">
-                    Your Profile
-                </div> -->
-
+                
                 <div class="card-body p-0">
                     <table class="table table-striped catlist">
 
@@ -182,11 +179,6 @@ if (isset($_GET['orderid']) && $_GET['orderid'] == 'order') {
             <div class="d-flex justify-content-evenly">
                 <a href="?orderid=order"><button type="button" class="btn btn-danger my-3" style="width: 170px; height: 50px;">Order</button></a>
 
-
-                <!-- <form action="momo.php" method="POST">
-                    <input type="hidden" name="total_price" value="<?php echo $fm->format_currency($subtotal * 20000) . 'đ'; ?>">
-                    <button class="btn btn-danger my-3" style="width: 170px; height: 50px;" name="">MOMO</button>
-                </form> -->
             </div>
 
 

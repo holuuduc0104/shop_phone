@@ -13,7 +13,7 @@ if (isset($_GET['shiftid'])) {
    $id = $_GET['shiftid'];
    $shifted = $ct->shifted($id);
    if($shifted){
-    echo "<script>window.location='inbox.php'</script>";
+    echo "<script>window.location='order.php'</script>";
 }
 }
 
@@ -21,7 +21,7 @@ if (isset($_GET['delid'])) {
     $id = $_GET['delid'];
     $del_shifted = $ct->del_shifted($id);
     if($del_shifted){
-        echo "<script>window.location='inbox.php'</script>";
+        echo "<script>window.location='order.php'</script>";
     }
  }
 
@@ -76,7 +76,7 @@ if (isset($_GET['delid'])) {
                                             <?php
                                             }else{
                                             ?>
-                                                <a href="?delid=<?php echo $result['order_code']; ?>" class="fw-bolder">Remove</a>
+                                                <a onclick="return confirm('Do you want to delete?')" href="?delid=<?php echo $result['order_code']; ?>" class="fw-bolder">Remove</a>
                                             <?php
                                             }}
                                             ?>

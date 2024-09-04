@@ -25,17 +25,17 @@ if (!isset($_GET['brandid']) || $_GET['brandid'] == NULL) {
                 <div class="product_list py-3">
                     <div class="row">
                         <?php
-                        $getall_product_by_brand = $product->getall_product_by_brand($brandid, $catid);
-                        if ($getall_product_by_brand) {
-                            while ($result = $getall_product_by_brand->fetch_assoc()) {
+                        $get_product_by_brand = $product->get_product_by_brand($brandid, $catid);
+                        if ($get_product_by_brand) {
+                            while ($result = $get_product_by_brand->fetch_assoc()) {
                         ?>
                                 <div class="col-md-3 pro_list">
                                     <div class="product pt-3 px-3">
-                                    <a href="details.php?proid=<?php echo $result['productID']; ?>"><img src="admin/uploads/<?php echo $result['image']; ?>" class="img-fluid "></a>
-                                    <h4><a href="details.php?proid=<?php echo $result['productID']; ?>" class="text-dark"><?php echo $result['productName'] ?></a></h4>
-                                    <h3 class="text-danger"><?php echo '$' . $fm->format_currency($result['price']); ?></h3>
+                                        <a href="details.php?proid=<?php echo $result['productID']; ?>"><img src="admin/uploads/<?php echo $result['image']; ?>" class="img-fluid "></a>
+                                        <h4><a href="details.php?proid=<?php echo $result['productID']; ?>" class="text-dark"><?php echo $result['productName'] ?></a></h4>
+                                        <h3 class="text-danger"><?php echo '$' . $fm->format_currency($result['price']); ?></h3>
                                     </div>
-                                    
+
                                 </div>
                         <?php
                             }
@@ -44,7 +44,20 @@ if (!isset($_GET['brandid']) || $_GET['brandid'] == NULL) {
                     </div>
                 </div>
             </div>
+            <p>
+            <?php
+            $getall_product_by_brand = $product->getall_product_by_brand($brandid, $catid);
+            $count = mysqli_num_rows($getall_product_by_brand);
+            $pages = ceil($count/16);
+            for ($i=1; $i<=$pages;$i++){
+            ?>
+                <a href="productbybrand.php?catid=<?php echo $catid; ?>&brandid=<?php echo $brandid; ?>&page=<?php echo $i; ?>"><button type="button" class="btn btn-outline-danger"><?php echo $i; ?></button></a>
+            <?php
+             }
+            ?>
+            </p>
     </section>
+
 </div>
 <?php
 include("inc/footer.php");

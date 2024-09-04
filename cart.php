@@ -20,7 +20,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['submit'])) {
         $delcart = $ct->del_product_cart($cartID);
     }
 }
-if(!isset($_GET['id'])){
+if (!isset($_GET['id'])) {
     echo "<meta http-equiv='refresh' content='0;URL=?id=live'>";
 }
 ?>
@@ -37,10 +37,10 @@ if(!isset($_GET['id'])){
                     <table class="table table-striped catlist">
                         <thead>
                             <tr>
-                                <th scope="col" style="width: 700px;">Product</th>
-                                <th scope="col" style="width: 220px;">Price</th>
-                                <th scope="col" style="width: 220px;">Quantity</th>
-                                <th scope="col" style="width: 220px;">Total Price</th>
+                                <th scope="col" style="width: 45%;">Product</th>
+                                <th scope="col" style="width: 10%;">Price</th>
+                                <th scope="col" style="width: 15%;">Quantity</th>
+                                <th scope="col" style="width: 15%;">Total Price</th>
                                 <th scope="col" class="text-center">Action</th>
                             </tr>
                         </thead>
@@ -56,11 +56,16 @@ if(!isset($_GET['id'])){
                                     <tr>
                                         <td>
                                             <div class="row">
+
                                                 <div class="col-md-2">
-                                                    <img src="admin/uploads/<?php echo $result['image'] ?>" style="width: 100px;">
+                                                    <a href="details.php?proid=<?php echo $result['productID']; ?>">
+                                                        <img src="admin/uploads/<?php echo $result['image'] ?>" style="width: 100px;">
+                                                    </a>
                                                 </div>
                                                 <div class="col-md-10">
-                                                    <p><?php echo $result['productName']; ?></p>
+                                                    <a href="details.php?proid=<?php echo $result['productID']; ?>">
+                                                    <p class="text-dark"><?php echo $result['productName']; ?></p>
+                                                    </a>
                                                 </div>
                                             </div>
 
@@ -120,12 +125,10 @@ if(!isset($_GET['id'])){
                                         </div>
                                     </td>
                                 <?php
-                                }elseif(!Session::get('customer_login')){
-                                    echo '<span class="text-danger fs-3">Your Cart is Empty!</span>';
-                                }
-                                
-                                else{
-                                    echo '<span class="text-danger fs-3">Your Cart is Empty!</span>';
+                                } else {
+                                    echo '<script>alert("Your Cart is Empty!");
+                                            window.location="index.php";
+                                            </script>';
                                 }
                                 ?>
                             </tr>

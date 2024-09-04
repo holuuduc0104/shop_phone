@@ -1,6 +1,6 @@
 <!-- <!DOCTYPE html>
-<html lang="en"> -->
-<!-- 
+<html lang="en">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -16,7 +16,7 @@
   <div class="wrapper background">
     <nav id="sidebar">
       <div class="sidebar-header">
-        <h3>Bootstrap Slider</h3>
+        <h3>Admin</h3>
       </div>
       <ul class="list-unstyled components">
         <!-- <p>The Providers</p> -->
@@ -43,6 +43,9 @@
         </li>
         <li>
           <a href="slidelist.php">Slider</a>
+        </li>
+        <li>
+          <a href="order.php">Order</a>
         </li>
       </ul>
     </nav>

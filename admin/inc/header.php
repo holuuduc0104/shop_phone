@@ -41,8 +41,8 @@ Session::checkSession();
                                         </div>
                                     </div>
                                     <div class="col-9">
-                                        Tư vấn hỗ trợ<br>
-                                        <strong class="text-danger">0123456789</strong>
+                                        Contact<br>
+                                        <strong class="text-danger">0813727840</strong>
                                     </div>
                                 </div>
                             </div>

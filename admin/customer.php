@@ -10,7 +10,7 @@ include_once($filepath . "/../helpers/format.php");
 $ctm = new customer();
 $fm = new Format();
 if (!isset($_GET['customerid']) || $_GET['customerid'] == NULL) {
-    echo "<script>window.location='inbox.php'</script>";
+    echo "<script>window.location='order.php'</script>";
 }else{
     $id = $_GET['customerid'];
     $order_code = $_GET['order_code'];

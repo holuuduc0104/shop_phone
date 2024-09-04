@@ -42,8 +42,9 @@
           ?>
               <div class="mb-3">
                 <div class="border-bottom text-start border-3 ms-4">
-                  <h3><strong><?php echo strtoupper($result_cat['catName']) ?></strong></h3>
-                  <!-- <h3><a href="productbybrand.php?catid=<?php echo $catid; ?>&brandid=<?php echo $result_brand['brandID']; ?>" class="link_to_brand"><strong><?php echo $result_brand['brandName']; ?></strong></a></h3> -->
+                  <a href="productbycat.php?catid=<?php echo $result_cat['catID']; ?>" class="text-dark">
+                    <h3><strong><?php echo strtoupper($result_cat['catName']) ?></strong></h3>
+                  </a>
                 </div>
                 <div class="product_list py-3">
                   <div class="row">
@@ -94,8 +95,8 @@
                 }
                 ?>
               </div>
-            </div>
-          </div> -->
+            </div>-->
+        </div>
       </section>
     </div>
     <?php

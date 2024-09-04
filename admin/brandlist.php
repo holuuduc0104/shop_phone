@@ -10,9 +10,11 @@ if (isset($_GET['delid'])) {
     $delBrand = $brand->del_brand($id);
     if ($delBrand == 'true') {
         echo '<script>alert("Delete Brand Successfully.");
+        window.location="brandlist.php";
            </script>';
     } else {
         echo '<script>alert("Delete Brand Failed.");
+        window.location="brandlist.php";
         </script>';
     }
 }
@@ -55,13 +57,13 @@ if (isset($_GET['delid'])) {
                                         <td><?php echo $result['brandName']; ?></td>
                                         <td><img src="uploads/<?php echo $result['brandLogo']; ?>" width="100px" class="img-fluid"></td>
                                         <td class="text-center">
-                                            <button type="button" class="btn btn-warning" style="width: 100px; height:35px;">
+                                            <button type="button" class="btn btn-warning button" style="width: 100px; height:35px">
                                                 <a href="brandedit.php?brandid=<?php echo $result['brandID']; ?>" style="display: block;">Edit</a>
                                             </button>
                                         </td>
                                         <td class="text-center">
-                                            <button type="button" class="btn btn-danger" style="width: 100px; height:35px;">
-                                                <a onclick="return confirm('Are you want to delete?')" href="?delid=<?php echo $result['brandID']; ?>" style="display: block;">Delete</a>
+                                            <button type="button" class="btn btn-danger button" style="width: 100px; height:35px;">
+                                                <a onclick="return confirm('Do you want to delete?')" href="?delid=<?php echo $result['brandID']; ?>" style="display: block;">Delete</a>
                                             </button>
                                         </td>
                                     </tr>

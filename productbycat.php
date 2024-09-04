@@ -33,12 +33,10 @@ if (!isset($_GET['catid']) || $_GET['catid'] == NULL) {
                 <div class="product_list py-3">
                     <div class="row">
                         <?php
-                        $get_product_by_cate = $product->getall_product_by_cat($catid);
+                        $get_product_by_cate = $product->get_product_by_cat_page($catid);
                         if ($get_product_by_cate) {
                             while ($result = $get_product_by_cate->fetch_assoc()) {
                         ?>
-
-
                                 <div class="col-md-3 pro_list">
                                     <div class="product pt-3 px-3">
                                         <a href="details.php?proid=<?php echo $result['productID']; ?>"><img src="admin/uploads/<?php echo $result['image']; ?>" class="img-fluid "></a>
@@ -55,6 +53,18 @@ if (!isset($_GET['catid']) || $_GET['catid'] == NULL) {
                     </div>
                 </div>
             </div>
+            <p>
+            <?php
+            $get_product_by_cat = $product->getall_product_by_cat($catid);
+            $count = mysqli_num_rows($get_product_by_cat);
+            $pages = ceil($count/16);
+            for ($i=1; $i<=$pages;$i++){
+            ?>
+                <a href="productbycat.php?catid=<?php echo $catid; ?>&page=<?php echo $i; ?>"><button type="button" class="btn btn-outline-danger"><?php echo $i; ?></button></a>
+            <?php
+             }
+            ?>
+            </p>
     </section>
 </div>
 <?php

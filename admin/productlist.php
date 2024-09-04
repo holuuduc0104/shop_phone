@@ -14,9 +14,11 @@ if (isset($_GET['delid'])) {
     $delProduct = $pd->del_product($id);
     if ($delProduct == 'true') {
         echo '<script>alert("Delete Product Successfully.");
+        window.location="productlist.php";
            </script>';
     } else {
         echo '<script>alert("Delete Product Failed.");
+        window.location="productlist.php";
         </script>';
     }
 }
@@ -70,12 +72,12 @@ if (isset($_GET['delid'])) {
                                             }
                                             ?></td>
                                         <td class="text-center">
-                                            <button type="button" class="btn btn-warning" style="width: 80px; height:35px;">
+                                            <button type="button" class="btn btn-warning button" style="width: 80px; height:35px;">
                                                 <a href="productedit.php?productid=<?php echo $result['productID']; ?>" style="display: block;">Edit</a>
                                             </button>
                                         </td>
                                         <td class="text-center">
-                                            <button type="button" class="btn btn-danger" style="width: 80px; height:35px;">
+                                            <button type="button" class="btn btn-danger button" style="width: 80px; height:35px;">
                                                 <a onclick="return confirm('Do you want to delete?')" href="?delid=<?php echo $result['productID']; ?>" style="display: block;">Delete</a>
                                             </button>
                                         </td>

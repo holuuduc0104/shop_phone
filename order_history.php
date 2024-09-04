@@ -19,7 +19,7 @@ if (isset($_GET['received'])) {
     <div class="row justify-content-center">
 
         <div class="col-md-11">
-            <div class="card form_bg">
+            <div class="card form_bg my-5">
                 <div class="card-header text-white form_bg fs-4" style="font-weight:bolder;">
                     Order History
                 </div>
